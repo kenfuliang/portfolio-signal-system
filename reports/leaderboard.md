@@ -7,7 +7,7 @@ Best run per strategy x universe, ranked by fitness then lower decay. Legacy row
 | rank | strategy | universe | OOS Sharpe | OOS CAGR | OOS MaxDD | decay | fitness | run_id | git_sha |
 |---|---|---|---|---|---|---|---|---|---|
 | 1 | momentum_12_1 | broad | 0.932 |  |  | -0.395 | 0.600 | 2026-06-16T23:30:00+00:00-momentum_12_1-04fd |  |
-| 2 | vol_target_momentum | broad | 0.209 |  |  | 0.264 | 0.050 | 2026-06-17T00:15:00+00:00-vol_target_momentum-3cec |  |
+| 2 | vol_target_momentum | broad | 0.336 |  |  | 0.082 | 0.180 | 2026-06-17T01:00:00+00:00-vol_target_momentum-cd67 |  |
 | 3 | vol_target_momentum | diversified | 0.278 |  |  | -0.541 | 0.010 | 2026-06-16T21:15:00+00:00-vol_target_momentum-250a |  |
 | 4 | vol_target_momentum | watchlist | -0.751 | 0.030 | 15.200 | 0.487 | -1.490 | 2026-06-16T19:00:00+00:00-vol_target_momentum-6023 |  |
 | 5 | roc_momentum | watchlist | -0.865 | -1.783 |  | 0.685 | -1.550 | 2026-06-16T20:30:00+00:00-roc_momentum-2c5f |  |
