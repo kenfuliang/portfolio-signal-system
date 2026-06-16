@@ -326,6 +326,36 @@ price-only momentum still tops out near the noise band, so after this thread clo
 the higher-value lever is **exiting degraded mode (fundamentals/sentiment)**, not
 more price permutations. (Survivorship caveat still applies.)
 
+## Finding 12 — Capstone: the robust overlay matches the noise band (price-only ceiling)
+
+*Iteration 9 via `/evolve-strategy`, 2026-06-17. Ledger run_id
+`2026-06-17T01:00:00+00:00-vol_target_momentum-cd67`. Closes the price-momentum thread.*
+
+Completed the two-split test of the overlay on the broad universe:
+
+| Split | Overlay OOS | Baseline OOS |
+|---|---|---|
+| Crash (2021-06-30) | **+0.209** | −0.322 |
+| Recovery (2022-06-30) | +0.336 | **+0.932** |
+| **mean / spread** | **+0.27 / 0.13** | +0.31 / **1.25** |
+
+The overlay on the broad universe is **the most robust configuration found** —
+positive in *both* regimes with near-zero decay (0.26, 0.08), versus the baseline
+that swings from −0.32 to +0.93. It is a genuine lower-variance, crash-hedged
+momentum. **But it is not a winner by the bar:** it loses the recovery split on raw
+Sharpe (it trades upside for protection — a hedge, not alpha), its mean OOS (+0.27)
+sits *below* the ~0.3–0.4 deflated-Sharpe noise band for ~100+ trials, and it does
+not beat QQQ (0.68). Survivorship bias inflates even these numbers.
+
+**Conclusion of iterations 1–9 (the honest one):** on **price-only,
+survivorship-biased** data, 12-1 momentum and every overlay/sizing/universe variant
+tops out at the multiple-testing noise band. We learned a real, well-evidenced causal
+story (deployment → universe → momentum-crash → hedge) and produced a defensible
+risk-management overlay — but **no buy-and-hold-beating alpha, and zero satellite
+promotions.** The lever that remains is not another price permutation; it is the one
+deferred since the start: **exit degraded mode — wire fundamentals/sentiment** — plus
+a point-in-time universe to kill survivorship. The price-momentum loop is paused here.
+
 ## Recommendation
 
 If trading any of this: favor **classic 12-1 / dual momentum on a diversified,
