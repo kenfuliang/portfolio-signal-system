@@ -356,6 +356,36 @@ promotions.** The lever that remains is not another price permutation; it is the
 deferred since the start: **exit degraded mode — wire fundamentals/sentiment** — plus
 a point-in-time universe to kill survivorship. The price-momentum loop is paused here.
 
+## Finding 13 — Fundamentals pivot: data validated, but BLOCKED on a data-tier decision
+
+*Iteration 10 via `/evolve-strategy`, 2026-06-17. The deliberate pivot off
+price-only (Finding 12) toward a new information source.*
+
+Per Finding 12, stopped permuting price and opened the fundamentals thread. Pulled
+real fundamentals via the FMP MCP for a pilot quality/value IC test (ROIC + earnings
+yield, FY2022, vs forward-2023 return). Two concrete results:
+
+1. **The data is the right shape.** FMP returns clean point-in-time fundamentals —
+   `returnOnInvestedCapital`, `earningsYield`, `returnOnEquity` per fiscal year, with
+   real fiscal-year-end dates (the point-in-time alignment a proper factor needs).
+2. **But the path is blocked.** The FMP MCP on the current plan is **rate/plan-limited**
+   (≈half the pilot symbols returned `ACCESS DENIED: requires a higher plan`), so it
+   cannot batch a universe. And it is **agent-mediated** — fine for research, but it
+   cannot sit in the live/backtest path (golden rule #1: one engine path). Only ~5 of
+   10 names returned; an IC on n=5 would be noise, so none was computed (rules forbid
+   junk numbers).
+
+**This is the data-tier decision the project has deferred since day one** (CLAUDE.md
+"resolve the data-tier decision"). Exiting degraded mode needs one of:
+- a **paid FMP tier + REST API key** wired as a scriptable ingestion (`scripts/`), so
+  fundamentals land in LEAN-readable form on the one engine path; or
+- **LEAN's native fundamental data** (US Fundamental), used directly in `main.py`.
+
+Both cost money / a subscription choice — a human decision (golden rules), not an
+autonomous-loop step. The price-momentum loop is honestly exhausted (Findings 1–12,
+ceiling proven); the fundamentals loop is **blocked here pending that decision**. The
+autonomous loop is paused rather than fall back to more price permutations (circling).
+
 ## Recommendation
 
 If trading any of this: favor **classic 12-1 / dual momentum on a diversified,
