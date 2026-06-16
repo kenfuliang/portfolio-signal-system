@@ -1,0 +1,11 @@
+# Engine / CLI (leveraged — not built here)
+lean>=1.0.0
+
+# Config & data handling for strategy logic
+pyyaml>=6.0
+pandas>=2.0
+numpy>=1.24
+
+# Optional research/validation
+matplotlib>=3.7
+jupyter>=1.0

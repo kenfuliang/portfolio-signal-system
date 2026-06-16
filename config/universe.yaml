@@ -1,0 +1,33 @@
+# Trading universe — the names the system is allowed to consider.
+# Organized by sleeve (see design doc §5). Start with a curated watchlist;
+# switch to a screened universe once a paid data tier / LEAN fundamentals are live.
+
+mode: watchlist            # watchlist | screened
+
+sleeves:
+  core:                    # 50-70% — broad / sector ETFs, low turnover
+    - SMH                  # VanEck Semiconductor ETF
+    - SOXX                 # iShares Semiconductor ETF
+    - QQQ                  # Nasdaq-100
+    - VTI                  # Total US market
+
+  satellite:               # 20-40% — conviction single stocks (AI-semis / optical theme)
+    - AXTI                 # AXT Inc — InP/GaAs substrates
+    - COHR                 # Coherent — optical components
+    - LITE                 # Lumentum — optical components
+    - AAOI                 # Applied Optoelectronics
+    - FN                   # Fabrinet
+    - CIEN                 # Ciena
+    - MRVL                 # Marvell
+    - GLW                  # Corning
+
+  tactical:                # 0-10% HARD CAP — leveraged / single-stock ETFs, short hold
+    - AXTX                 # 2x Long AXTI (daily reset — see risk.yaml leveraged rules)
+
+# Screener filters (used only when mode: screened; requires paid FMP tier or LEAN fundamentals)
+screener:
+  sector: "Technology"
+  industry: "Semiconductors"
+  market_cap_min: 1000000000
+  min_avg_volume: 500000
+  actively_trading: true

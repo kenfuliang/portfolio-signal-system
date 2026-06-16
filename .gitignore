@@ -1,0 +1,22 @@
+# Secrets — NEVER commit
+*.env
+.env
+config/secrets.yaml
+**/credentials*.json
+
+# LEAN
+data/
+backtests/
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

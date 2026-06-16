@@ -1,0 +1,36 @@
+# Risk & portfolio construction rules (design doc §5).
+# These are the guardrails; the strategy code MUST respect every one of them.
+
+# --- Position sizing: risk-based, not equal-weight ---
+sizing:
+  risk_per_trade_pct: 0.0075     # 0.75% of equity risked per position (stop distance basis)
+  max_position_pct: 0.10         # no single name > 10% of equity
+  atr_stop_multiple: 2.5         # stop placed 2.5 x ATR below entry
+  atr_period: 14
+
+# --- Sleeve allocation targets (fractions of equity) ---
+sleeves:
+  core:      { min: 0.50, max: 0.70 }
+  satellite: { min: 0.20, max: 0.40 }
+  tactical:  { min: 0.00, max: 0.10 }   # HARD CAP across all leveraged names
+  rebalance_band_pct: 0.05              # flag drift beyond +/-5% of target
+
+# --- Diversification caps ---
+diversification:
+  max_per_name_pct: 0.10
+  max_per_sector_pct: 0.30
+  min_cash_buffer_pct: 0.05
+
+# --- Leveraged / single-stock ETF rules (AXTX-type) ---
+leveraged:
+  symbols: [AXTX]
+  portfolio_cap_pct: 0.10          # combined cap (== tactical sleeve)
+  tighter_stop_atr_multiple: 1.5   # tighter than normal positions
+  time_stop_days: 10               # exit if thesis hasn't played out
+  monitor: daily                   # daily reset => never hold passively
+  allow_averaging_down: false
+
+# --- Portfolio-level circuit breaker ---
+circuit_breaker:
+  max_drawdown_pct: 0.15           # from peak equity
+  action: "halt_new_buys"          # pause entries + alert; review highest-vol sleeve first

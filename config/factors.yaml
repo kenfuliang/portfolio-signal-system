@@ -1,0 +1,34 @@
+# Factor model (design doc §4). Composite = weighted sum of per-sector
+# percentile scores. Weights MUST sum to 1.0. Tune by BACKTEST, not by gut.
+
+weights:
+  trend:      0.35    # price vs 50/200-day MA, 12-1 momentum, distance from 52wk high
+  quality:    0.25    # margins, ROIC, revenue growth, debt/equity
+  valuation:  0.20    # P/E, EV/EBITDA, PEG vs sector median
+  sentiment:  0.20    # Bigdata sentiment/news flow, upcoming events
+
+# --- Buy gate (ALL must pass) ---
+buy:
+  min_composite_percentile: 0.80   # top quintile of universe
+  require_above_sma200: true       # don't fight the primary trend
+  require_above_sma50: true
+  block_days_before_earnings: 3    # avoid binary events unless strategy targets them
+
+# --- Sell triggers (ANY fires an exit/trim) ---
+sell:
+  stop_loss: true                  # close below position stop (fires first)
+  thesis_break: true               # quality collapse / extreme valuation / negative catalyst
+  rank_decay_below_percentile: 0.50  # drops out of top half -> redeploy
+  risk_breach: true                # size or portfolio limits tripped
+
+# --- Data availability per factor (honest about the free tier) ---
+# trend     : price-only -> works on any feed (incl. free)
+# quality   : needs fundamentals (LEAN fundamentals / paid FMP)
+# valuation : needs fundamentals
+# sentiment : needs Bigdata connector
+# Until those are wired, factors.py runs trend-only and logs a degraded-mode warning.
+data_requirements:
+  trend:     price
+  quality:   fundamentals
+  valuation: fundamentals
+  sentiment: bigdata
