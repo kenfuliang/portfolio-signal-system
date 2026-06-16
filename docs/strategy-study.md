@@ -193,6 +193,32 @@ watchlist. Next: take the one thing that *worked* — the vol-target overlay won
 out-of-sample on the **diversified** universe — and harden it there (multi-split +
 deflated Sharpe), and/or broaden the watchlist toward a real cross-section.
 
+## Finding 7 — The vol-target overlay repeatably beats baseline OOS on diversified (→ tactical)
+
+*Iteration 4 via `/evolve-strategy`, 2026-06-16. Ledger run_id
+`2026-06-16T21:15:00+00:00-vol_target_momentum-250a`. First non-rejection.*
+
+Pivoting off the watchlist (Finding 6), tested the vol-target overlay
+(`vol_target_momentum`) vs plain `momentum_12_1` on the **diversified** universe,
+sizing held at vol_target so the only variable is the overlay.
+
+| Strategy | IS Sharpe | OOS Sharpe |
+|---|---|---|
+| **vol_target_momentum** | −0.263 | **+0.278** |
+| momentum_12_1 | −0.04 | **−1.321** |
+
+The overlay beats the baseline OOS by a wide margin, and the win is **repeatable**:
+the earlier legacy diversified run (risk_based sizing) also showed it winning
+(+0.32 vs −0.63). Two sizing modes, same direction.
+
+**Gate: TACTICAL, not satellite.** Two honest brakes: (1) OOS +0.278 sits *below*
+the ~0.3–0.4 deflated-Sharpe noise band for ~100+ trials — it **fails DSR**, so it
+is not yet "good"; (2) it does not beat buy-and-hold (SPY 0.53, QQQ 0.68). It earns
+a bounded exploratory (≤10% tactical) look because it reliably beats the strategy
+baseline, nothing more. Next: a real **multi-split + formal deflated Sharpe** pass
+to see whether it clears the bar and earns satellite — and an honest comparison to
+the buy-hold baselines.
+
 ## Recommendation
 
 If trading any of this: favor **classic 12-1 / dual momentum on a diversified,
