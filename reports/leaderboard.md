@@ -10,7 +10,7 @@ Best run per strategy x universe, ranked by fitness then lower decay. Legacy row
 | 2 | vol_target_momentum | watchlist | -0.751 | 0.030 | 15.200 | 0.487 | -1.490 | 2026-06-16T19:00:00+00:00-vol_target_momentum-6023 |  |
 | 3 | roc_momentum | watchlist | -0.865 | -1.783 |  | 0.685 | -1.550 | 2026-06-16T20:30:00+00:00-roc_momentum-2c5f |  |
 | 4 | momentum_12_1 | watchlist | -0.591 | -0.845 |  | 1.057 | -1.700 | 2026-06-16T19:45:00+00:00-momentum_12_1-28d2 |  |
-| 5 | momentum_12_1 | diversified | -0.633 | -1.165 | 17.200 | 0.487 |  | 2026-06-16T16:10:54.813442Z-momentum_12_1-0f59 |  |
+| 5 | momentum_12_1 | diversified | 0.608 | 19.337 | 21.900 | -0.648 |  | 2026-06-16T21:03:42.408994+00:00-momentum_12_1-dab9 | 7663e99 |
 | 6 | trend_ma | diversified | 0.237 | 6.680 | 14.000 |  |  | 2026-06-16T08:33:23.271876Z-trend_ma-4031 |  |
 | 7 | golden_cross | diversified | -0.274 | 0.495 | 33.400 |  |  | 2026-06-16T08:33:23.271876Z-golden_cross-29e0 |  |
 | 8 | roc_momentum | diversified | -0.023 | 3.921 | 15.500 |  |  | 2026-06-16T08:33:23.271876Z-roc_momentum-8a90 |  |

@@ -219,6 +219,33 @@ baseline, nothing more. Next: a real **multi-split + formal deflated Sharpe** pa
 to see whether it clears the bar and earns satellite — and an honest comparison to
 the buy-hold baselines.
 
+## Finding 8 — Multi-split kills the overlay's "edge": it's a crash hedge, not alpha
+
+*Iteration 5 via `/evolve-strategy`, 2026-06-16. Ledger run_id
+`2026-06-16T22:00:00+00:00-vol_target_momentum-6382`. Downgrades Finding 7.*
+
+Finding 7 promoted `vol_target_momentum` to tactical on one split. Iteration 5 added
+a second split boundary to test robustness:
+
+| Split (OOS window) | overlay OOS | baseline OOS | winner |
+|---|---|---|---|
+| 2021-06-30 (incl. 2022 crash) | **+0.278** | −1.321 | overlay |
+| 2022-06-30 (the recovery)     | +0.359 | **+0.608** | **baseline** |
+
+The overlay **loses to the baseline on the second split**, so it fails the
+"beat baseline on ALL splits" gate → **reject for satellite, tactical downgraded.**
+The mechanism is now clear: the overlay is a **crash hedge**, not robust alpha — its
+regime gate/vol scaling wins when the test window *contains* a drawdown it sidesteps,
+and loses when the window is a *recovery* it sits out of. The single-split "+0.278
+win" was regime placement, exactly the noise the deflated-Sharpe caution flagged.
+
+**Lesson banked:** the multi-split gate caught regime-luck that a single split would
+have shipped. Across iterations 1–5, no momentum/overlay/sizing tweak produced
+split-robust alpha on these two universes. The evidence keeps pointing at the
+**universe** (Finding 1, 6): a broad cross-section where momentum can actually
+diversify, or exiting degraded mode (fundamentals), is the next real lever — not
+more signal/sizing variants.
+
 ## Recommendation
 
 If trading any of this: favor **classic 12-1 / dual momentum on a diversified,
