@@ -18,7 +18,9 @@ sleeves:
 # --- Diversification caps ---
 diversification:
   max_per_name_pct: 0.10
-  max_per_sector_pct: 0.30
+  max_per_sector_pct: null    # disabled: no real sector data yet. A synthetic
+                              # per-name=sector mapping would falsely cap every
+                              # name at this value. Re-enable once sectors wired.
   min_cash_buffer_pct: 0.05
 
 # --- Leveraged / single-stock ETF rules (AXTX-type) ---

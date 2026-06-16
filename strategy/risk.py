@@ -70,14 +70,16 @@ def enforce_caps(
         if w > div["max_per_name_pct"]:
             adj[sym] = div["max_per_name_pct"]; notes.append(f"{sym}: name cap")
 
-    # per-sector cap
+    # per-sector cap — skipped when max_per_sector_pct is null/0 (no real sector
+    # data: a synthetic per-name=sector mapping must not masquerade as a limit).
+    sector_cap = div.get("max_per_sector_pct")
     by_sector: dict[str, float] = {}
     for sym, w in adj.items():
         by_sector.setdefault(sector_of.get(sym, "?"), 0.0)
         by_sector[sector_of.get(sym, "?")] += w
-    for sector, total in by_sector.items():
-        if total > div["max_per_sector_pct"] and total > 0:
-            scale = div["max_per_sector_pct"] / total
+    for sector, total in (by_sector.items() if sector_cap else []):
+        if total > sector_cap and total > 0:
+            scale = sector_cap / total
             for sym in adj:
                 if sector_of.get(sym) == sector:
                     adj[sym] *= scale

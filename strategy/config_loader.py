@@ -22,6 +22,7 @@ class Config:
     universe: dict[str, Any] = field(default_factory=dict)
     risk: dict[str, Any] = field(default_factory=dict)
     factors: dict[str, Any] = field(default_factory=dict)
+    strategies: dict[str, Any] = field(default_factory=dict)
 
     @classmethod
     def load(cls) -> "Config":
@@ -29,6 +30,7 @@ class Config:
             universe=_load("universe.yaml"),
             risk=_load("risk.yaml"),
             factors=_load("factors.yaml"),
+            strategies=_load("strategies.yaml"),
         )
         cfg.validate()
         return cfg
@@ -42,12 +44,25 @@ class Config:
         for name in ("core", "satellite", "tactical"):
             if name not in sl:
                 raise ValueError(f"risk.yaml missing sleeve '{name}'")
+        # validate the active strategy against the registry (import here to avoid
+        # a cycle: registry imports nothing from config at module load).
+        from .registry import ALL_STRATEGIES
+        active = self.active_strategy()
+        if active not in ALL_STRATEGIES:
+            raise ValueError(
+                f"strategies.yaml active '{active}' not registered. "
+                f"Available: {', '.join(ALL_STRATEGIES)}"
+            )
+
+    def active_strategy(self) -> str:
+        return self.strategies.get("active", "trend_ma")
 
     # --- convenience accessors ---
     def all_symbols(self) -> list[str]:
         out: list[str] = []
         for syms in self.universe.get("sleeves", {}).values():
-            out.extend(syms)
+            # coerce to str: YAML turns unquoted tickers like ON/NO/TRUE into bools
+            out.extend(str(s).upper() if isinstance(s, bool) else s for s in (syms or []))
         return out
 
     def sleeve_of(self, symbol: str) -> str | None:
