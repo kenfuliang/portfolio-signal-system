@@ -116,8 +116,19 @@ def main():
     ap.add_argument("--strategies", required=True)
     ap.add_argument("--universe", default="diversified",
                     help="diversified (default, ETF sleeves) | watchlist (committed production universe)")
+    ap.add_argument("--split", default=None,
+                    help="IS/OOS boundary YYYY-MM-DD (default 2021-06-30). Use several "
+                         "values across runs to build a multi-split robustness picture.")
     args = ap.parse_args()
     names = [s.strip() for s in args.strategies.split(",") if s.strip()]
+
+    # optional alternate split boundary (for multi-split robustness / deflated Sharpe)
+    global IS, OOS
+    if args.split:
+        from datetime import date, timedelta
+        y, m, d = map(int, args.split.split("-"))
+        IS = (IS[0], args.split)
+        OOS = ((date(y, m, d) + timedelta(days=1)).isoformat(), OOS[1])
 
     # watchlist = the committed config/universe.yaml as-is; diversified = override it.
     if args.universe == "diversified":
