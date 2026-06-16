@@ -7,57 +7,57 @@ Best run per strategy x universe, ranked by fitness then lower decay. Legacy row
 | rank | strategy | universe | OOS Sharpe | OOS CAGR | OOS MaxDD | decay | fitness | run_id | git_sha |
 |---|---|---|---|---|---|---|---|---|---|
 | 1 | vol_target_momentum | diversified | 0.278 |  |  | -0.541 | 0.010 | 2026-06-16T21:15:00+00:00-vol_target_momentum-250a |  |
-| 2 | vol_target_momentum | watchlist | -0.751 | 0.030 | 15.200 | 0.487 | -1.490 | 2026-06-16T19:00:00+00:00-vol_target_momentum-6023 |  |
-| 3 | roc_momentum | watchlist | -0.865 | -1.783 |  | 0.685 | -1.550 | 2026-06-16T20:30:00+00:00-roc_momentum-2c5f |  |
-| 4 | momentum_12_1 | watchlist | -0.591 | -0.845 |  | 1.057 | -1.700 | 2026-06-16T19:45:00+00:00-momentum_12_1-28d2 |  |
-| 5 | momentum_12_1 | diversified | 0.608 | 19.337 | 21.900 | -0.648 |  | 2026-06-16T21:03:42.408994+00:00-momentum_12_1-dab9 | 7663e99 |
-| 6 | trend_ma | diversified | 0.237 | 6.680 | 14.000 |  |  | 2026-06-16T08:33:23.271876Z-trend_ma-4031 |  |
-| 7 | golden_cross | diversified | -0.274 | 0.495 | 33.400 |  |  | 2026-06-16T08:33:23.271876Z-golden_cross-29e0 |  |
-| 8 | roc_momentum | diversified | -0.023 | 3.921 | 15.500 |  |  | 2026-06-16T08:33:23.271876Z-roc_momentum-8a90 |  |
-| 9 | macd | diversified | 0.504 | 9.667 | 15.700 |  |  | 2026-06-16T08:33:23.271876Z-macd-89a1 |  |
-| 10 | adx_trend | diversified | -0.329 | 1.871 | 16.400 |  |  | 2026-06-16T08:33:23.271876Z-adx_trend-29f2 |  |
-| 11 | breakout_52w | diversified | -0.518 | 0.281 | 20.900 |  |  | 2026-06-16T08:33:23.271876Z-breakout_52w-cf6e |  |
-| 12 | donchian | diversified | 0.436 | 8.602 | 10.200 |  |  | 2026-06-16T08:33:23.271876Z-donchian-4b5c |  |
-| 13 | volatility_breakout | diversified | 0.171 | 5.738 | 12.100 |  |  | 2026-06-16T08:33:23.271876Z-volatility_breakout-3527 |  |
-| 14 | keltner_breakout | diversified | 0.273 | 6.791 | 12.400 |  |  | 2026-06-16T08:33:23.271876Z-keltner_breakout-d97a |  |
-| 15 | rsi_reversion | diversified | -0.468 | 2.760 | 3.300 |  |  | 2026-06-16T08:33:23.271876Z-rsi_reversion-5f84 |  |
-| 16 | bollinger_reversion | diversified | -0.363 | 2.823 | 6.800 |  |  | 2026-06-16T08:33:23.271876Z-bollinger_reversion-89ec |  |
-| 17 | ma_envelope_dip | diversified | -1.329 | 0.931 | 4.800 |  |  | 2026-06-16T08:33:23.271876Z-ma_envelope_dip-ca27 |  |
-| 18 | zscore_reversion | diversified | -0.293 | 2.625 | 9.700 |  |  | 2026-06-16T08:33:23.271876Z-zscore_reversion-0fae |  |
-| 19 | dual_momentum | diversified | 0.158 | 5.426 | 11.800 |  |  | 2026-06-16T08:33:23.271876Z-dual_momentum-a18f |  |
-| 20 | sector_rotation | diversified | -0.663 | 1.428 | 7.200 |  |  | 2026-06-16T08:33:23.271876Z-sector_rotation-34d8 |  |
-| 21 | low_volatility | diversified | -0.385 | 2.444 | 9.900 |  |  | 2026-06-16T08:33:23.271876Z-low_volatility-78bd |  |
-| 22 | risk_parity | diversified | 0.282 | 8.036 | 32.600 |  |  | 2026-06-16T08:33:23.271876Z-risk_parity-53c5 |  |
-| 23 | relative_strength | diversified | -0.545 | 0.278 | 19.000 |  |  | 2026-06-16T08:33:23.271876Z-relative_strength-4905 |  |
-| 24 | vol_adjusted_momentum | diversified | -0.079 | 3.595 | 9.600 |  |  | 2026-06-16T08:33:23.271876Z-vol_adjusted_momentum-f4a3 |  |
-| 25 | momentum_runner | diversified | 0.369 | 7.805 | 13.100 |  |  | 2026-06-16T08:33:23.271876Z-momentum_runner-5a1c |  |
-| 26 | trend_filtered_hold | diversified | -0.409 | 1.219 | 18.000 |  |  | 2026-06-16T08:33:23.271876Z-trend_filtered_hold-03b5 |  |
-| 27 | equal_weight_hold | diversified | 0.282 | 8.036 | 32.600 |  |  | 2026-06-16T08:33:23.271876Z-equal_weight_hold-ee7c |  |
-| 28 | champion_trend_haven | diversified | 0.346 | 7.199 | 10.100 |  |  | 2026-06-16T08:33:23.271876Z-champion_trend_haven-28fb |  |
-| 29 | trend_ma | aisemis | -0.666 | -0.699 | 16.300 |  |  | 2026-06-16T08:06:00.872076Z-trend_ma-0bff |  |
-| 30 | rsi_reversion | aisemis | -0.723 | 1.448 | 6.500 |  |  | 2026-06-16T08:06:00.872076Z-rsi_reversion-cc86 |  |
-| 31 | golden_cross | aisemis | -0.226 | 0.319 | 29.800 |  |  | 2026-06-16T08:06:00.872076Z-golden_cross-3848 |  |
-| 32 | momentum_12_1 | aisemis | -0.548 | -0.893 | 17.600 |  |  | 2026-06-16T08:06:00.872076Z-momentum_12_1-4d60 |  |
-| 33 | roc_momentum | aisemis | -0.210 | 1.307 | 18.300 |  |  | 2026-06-16T08:06:00.872076Z-roc_momentum-d174 |  |
-| 34 | macd | aisemis | -0.757 | -0.716 | 18.400 |  |  | 2026-06-16T08:06:00.872076Z-macd-c3cd |  |
-| 35 | adx_trend | aisemis | -1.726 | -1.842 | 17.400 |  |  | 2026-06-16T08:06:00.872076Z-adx_trend-cde3 |  |
-| 36 | breakout_52w | aisemis | -0.794 | -0.799 | 15.900 |  |  | 2026-06-16T08:06:00.872076Z-breakout_52w-16eb |  |
-| 37 | donchian | aisemis | 0.127 | 5.458 | 15.900 |  |  | 2026-06-16T08:06:00.872076Z-donchian-4738 |  |
-| 38 | volatility_breakout | aisemis | -0.750 | -1.013 | 17.700 |  |  | 2026-06-16T08:06:00.872076Z-volatility_breakout-f493 |  |
-| 39 | keltner_breakout | aisemis | 0.173 | 6.189 | 15.900 |  |  | 2026-06-16T08:06:00.872076Z-keltner_breakout-bd70 |  |
-| 40 | bollinger_reversion | aisemis | -0.626 | 0.811 | 9.300 |  |  | 2026-06-16T08:06:00.872076Z-bollinger_reversion-3f00 |  |
-| 41 | ma_envelope_dip | aisemis | -0.340 | 2.380 | 7.700 |  |  | 2026-06-16T08:06:00.872076Z-ma_envelope_dip-02b8 |  |
-| 42 | zscore_reversion | aisemis | -0.465 | 0.887 | 14.800 |  |  | 2026-06-16T08:06:00.872076Z-zscore_reversion-0e21 |  |
-| 43 | dual_momentum | aisemis | -0.412 | -0.522 | 17.000 |  |  | 2026-06-16T08:06:00.872076Z-dual_momentum-5661 |  |
-| 44 | sector_rotation | aisemis | 0.203 | 5.646 | 7.700 |  |  | 2026-06-16T08:06:00.872076Z-sector_rotation-f552 |  |
-| 45 | low_volatility | aisemis | -0.061 | 3.539 | 16.600 |  |  | 2026-06-16T08:06:00.872076Z-low_volatility-7602 |  |
-| 46 | risk_parity | aisemis | 0.882 | 37.698 | 46.900 |  |  | 2026-06-16T08:06:00.872076Z-risk_parity-8e55 |  |
-| 47 | relative_strength | aisemis | -0.167 | 1.609 | 17.600 |  |  | 2026-06-16T08:06:00.872076Z-relative_strength-5baa |  |
-| 48 | equal_weight_hold | aisemis | 0.882 | 37.698 | 46.900 |  |  | 2026-06-16T08:06:00.872076Z-equal_weight_hold-9652 |  |
-| 49 | vol_adjusted_momentum | aisemis | -0.129 | 2.629 | 15.200 |  |  | 2026-06-16T08:06:00.872076Z-vol_adjusted_momentum-748a |  |
-| 50 | trend_filtered_hold | aisemis | -0.372 | -0.292 | 19.100 |  |  | 2026-06-16T08:06:00.872076Z-trend_filtered_hold-13b5 |  |
-| 51 | momentum_runner | aisemis | -0.477 | -0.383 | 16.900 |  |  | 2026-06-16T08:06:00.872076Z-momentum_runner-35e2 |  |
-| 52 | momentum_12_1 | broad | 0.439 | 15.657 | 45.800 |  |  | 2026-06-16T15:22:49.098474Z-momentum_12_1-1841 |  |
+| 2 | momentum_12_1 | broad | -0.322 | -3.020 |  | 1.072 | -1.390 | 2026-06-16T22:45:00+00:00-momentum_12_1-882f |  |
+| 3 | vol_target_momentum | watchlist | -0.751 | 0.030 | 15.200 | 0.487 | -1.490 | 2026-06-16T19:00:00+00:00-vol_target_momentum-6023 |  |
+| 4 | roc_momentum | watchlist | -0.865 | -1.783 |  | 0.685 | -1.550 | 2026-06-16T20:30:00+00:00-roc_momentum-2c5f |  |
+| 5 | momentum_12_1 | watchlist | -0.591 | -0.845 |  | 1.057 | -1.700 | 2026-06-16T19:45:00+00:00-momentum_12_1-28d2 |  |
+| 6 | momentum_12_1 | diversified | 0.608 | 19.337 | 21.900 | -0.648 |  | 2026-06-16T21:03:42.408994+00:00-momentum_12_1-dab9 | 7663e99 |
+| 7 | trend_ma | diversified | 0.237 | 6.680 | 14.000 |  |  | 2026-06-16T08:33:23.271876Z-trend_ma-4031 |  |
+| 8 | golden_cross | diversified | -0.274 | 0.495 | 33.400 |  |  | 2026-06-16T08:33:23.271876Z-golden_cross-29e0 |  |
+| 9 | roc_momentum | diversified | -0.023 | 3.921 | 15.500 |  |  | 2026-06-16T08:33:23.271876Z-roc_momentum-8a90 |  |
+| 10 | macd | diversified | 0.504 | 9.667 | 15.700 |  |  | 2026-06-16T08:33:23.271876Z-macd-89a1 |  |
+| 11 | adx_trend | diversified | -0.329 | 1.871 | 16.400 |  |  | 2026-06-16T08:33:23.271876Z-adx_trend-29f2 |  |
+| 12 | breakout_52w | diversified | -0.518 | 0.281 | 20.900 |  |  | 2026-06-16T08:33:23.271876Z-breakout_52w-cf6e |  |
+| 13 | donchian | diversified | 0.436 | 8.602 | 10.200 |  |  | 2026-06-16T08:33:23.271876Z-donchian-4b5c |  |
+| 14 | volatility_breakout | diversified | 0.171 | 5.738 | 12.100 |  |  | 2026-06-16T08:33:23.271876Z-volatility_breakout-3527 |  |
+| 15 | keltner_breakout | diversified | 0.273 | 6.791 | 12.400 |  |  | 2026-06-16T08:33:23.271876Z-keltner_breakout-d97a |  |
+| 16 | rsi_reversion | diversified | -0.468 | 2.760 | 3.300 |  |  | 2026-06-16T08:33:23.271876Z-rsi_reversion-5f84 |  |
+| 17 | bollinger_reversion | diversified | -0.363 | 2.823 | 6.800 |  |  | 2026-06-16T08:33:23.271876Z-bollinger_reversion-89ec |  |
+| 18 | ma_envelope_dip | diversified | -1.329 | 0.931 | 4.800 |  |  | 2026-06-16T08:33:23.271876Z-ma_envelope_dip-ca27 |  |
+| 19 | zscore_reversion | diversified | -0.293 | 2.625 | 9.700 |  |  | 2026-06-16T08:33:23.271876Z-zscore_reversion-0fae |  |
+| 20 | dual_momentum | diversified | 0.158 | 5.426 | 11.800 |  |  | 2026-06-16T08:33:23.271876Z-dual_momentum-a18f |  |
+| 21 | sector_rotation | diversified | -0.663 | 1.428 | 7.200 |  |  | 2026-06-16T08:33:23.271876Z-sector_rotation-34d8 |  |
+| 22 | low_volatility | diversified | -0.385 | 2.444 | 9.900 |  |  | 2026-06-16T08:33:23.271876Z-low_volatility-78bd |  |
+| 23 | risk_parity | diversified | 0.282 | 8.036 | 32.600 |  |  | 2026-06-16T08:33:23.271876Z-risk_parity-53c5 |  |
+| 24 | relative_strength | diversified | -0.545 | 0.278 | 19.000 |  |  | 2026-06-16T08:33:23.271876Z-relative_strength-4905 |  |
+| 25 | vol_adjusted_momentum | diversified | -0.079 | 3.595 | 9.600 |  |  | 2026-06-16T08:33:23.271876Z-vol_adjusted_momentum-f4a3 |  |
+| 26 | momentum_runner | diversified | 0.369 | 7.805 | 13.100 |  |  | 2026-06-16T08:33:23.271876Z-momentum_runner-5a1c |  |
+| 27 | trend_filtered_hold | diversified | -0.409 | 1.219 | 18.000 |  |  | 2026-06-16T08:33:23.271876Z-trend_filtered_hold-03b5 |  |
+| 28 | equal_weight_hold | diversified | 0.282 | 8.036 | 32.600 |  |  | 2026-06-16T08:33:23.271876Z-equal_weight_hold-ee7c |  |
+| 29 | champion_trend_haven | diversified | 0.346 | 7.199 | 10.100 |  |  | 2026-06-16T08:33:23.271876Z-champion_trend_haven-28fb |  |
+| 30 | trend_ma | aisemis | -0.666 | -0.699 | 16.300 |  |  | 2026-06-16T08:06:00.872076Z-trend_ma-0bff |  |
+| 31 | rsi_reversion | aisemis | -0.723 | 1.448 | 6.500 |  |  | 2026-06-16T08:06:00.872076Z-rsi_reversion-cc86 |  |
+| 32 | golden_cross | aisemis | -0.226 | 0.319 | 29.800 |  |  | 2026-06-16T08:06:00.872076Z-golden_cross-3848 |  |
+| 33 | momentum_12_1 | aisemis | -0.548 | -0.893 | 17.600 |  |  | 2026-06-16T08:06:00.872076Z-momentum_12_1-4d60 |  |
+| 34 | roc_momentum | aisemis | -0.210 | 1.307 | 18.300 |  |  | 2026-06-16T08:06:00.872076Z-roc_momentum-d174 |  |
+| 35 | macd | aisemis | -0.757 | -0.716 | 18.400 |  |  | 2026-06-16T08:06:00.872076Z-macd-c3cd |  |
+| 36 | adx_trend | aisemis | -1.726 | -1.842 | 17.400 |  |  | 2026-06-16T08:06:00.872076Z-adx_trend-cde3 |  |
+| 37 | breakout_52w | aisemis | -0.794 | -0.799 | 15.900 |  |  | 2026-06-16T08:06:00.872076Z-breakout_52w-16eb |  |
+| 38 | donchian | aisemis | 0.127 | 5.458 | 15.900 |  |  | 2026-06-16T08:06:00.872076Z-donchian-4738 |  |
+| 39 | volatility_breakout | aisemis | -0.750 | -1.013 | 17.700 |  |  | 2026-06-16T08:06:00.872076Z-volatility_breakout-f493 |  |
+| 40 | keltner_breakout | aisemis | 0.173 | 6.189 | 15.900 |  |  | 2026-06-16T08:06:00.872076Z-keltner_breakout-bd70 |  |
+| 41 | bollinger_reversion | aisemis | -0.626 | 0.811 | 9.300 |  |  | 2026-06-16T08:06:00.872076Z-bollinger_reversion-3f00 |  |
+| 42 | ma_envelope_dip | aisemis | -0.340 | 2.380 | 7.700 |  |  | 2026-06-16T08:06:00.872076Z-ma_envelope_dip-02b8 |  |
+| 43 | zscore_reversion | aisemis | -0.465 | 0.887 | 14.800 |  |  | 2026-06-16T08:06:00.872076Z-zscore_reversion-0e21 |  |
+| 44 | dual_momentum | aisemis | -0.412 | -0.522 | 17.000 |  |  | 2026-06-16T08:06:00.872076Z-dual_momentum-5661 |  |
+| 45 | sector_rotation | aisemis | 0.203 | 5.646 | 7.700 |  |  | 2026-06-16T08:06:00.872076Z-sector_rotation-f552 |  |
+| 46 | low_volatility | aisemis | -0.061 | 3.539 | 16.600 |  |  | 2026-06-16T08:06:00.872076Z-low_volatility-7602 |  |
+| 47 | risk_parity | aisemis | 0.882 | 37.698 | 46.900 |  |  | 2026-06-16T08:06:00.872076Z-risk_parity-8e55 |  |
+| 48 | relative_strength | aisemis | -0.167 | 1.609 | 17.600 |  |  | 2026-06-16T08:06:00.872076Z-relative_strength-5baa |  |
+| 49 | equal_weight_hold | aisemis | 0.882 | 37.698 | 46.900 |  |  | 2026-06-16T08:06:00.872076Z-equal_weight_hold-9652 |  |
+| 50 | vol_adjusted_momentum | aisemis | -0.129 | 2.629 | 15.200 |  |  | 2026-06-16T08:06:00.872076Z-vol_adjusted_momentum-748a |  |
+| 51 | trend_filtered_hold | aisemis | -0.372 | -0.292 | 19.100 |  |  | 2026-06-16T08:06:00.872076Z-trend_filtered_hold-13b5 |  |
+| 52 | momentum_runner | aisemis | -0.477 | -0.383 | 16.900 |  |  | 2026-06-16T08:06:00.872076Z-momentum_runner-35e2 |  |
 | 53 | dual_momentum | broad | 0.439 | 15.657 | 45.800 |  |  | 2026-06-16T15:22:49.098474Z-dual_momentum-3c7a |  |
 | 54 | vol_adjusted_momentum | broad | 0.030 | 4.309 | 21.600 |  |  | 2026-06-16T15:22:49.098474Z-vol_adjusted_momentum-063c |  |
 | 55 | low_volatility | broad | -0.119 | 3.280 | 20.700 |  |  | 2026-06-16T15:22:49.098474Z-low_volatility-ca59 |  |
