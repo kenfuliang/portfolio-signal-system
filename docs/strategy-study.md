@@ -273,6 +273,31 @@ sufficient** (OOS regime decay remains). Next: multi-split on the broad universe
 see whether the OOS failure is specific to the 2022-crash split (as in Finding 8),
 plus a survivorship-aware read.
 
+## Finding 10 — Broad momentum is crash-vulnerable, not broken → points to the synthesis
+
+*Iteration 7 via `/evolve-strategy`, 2026-06-16. Ledger run_id
+`2026-06-16T23:30:00+00:00-momentum_12_1-04fd`. Multi-split of Finding 9.*
+
+Re-ran broad-universe `momentum_12_1` at the 2022-06-30 split to test whether
+Finding 9's OOS failure was general or regime-specific:
+
+| Split (OOS window) | IS | OOS | vs QQQ (0.68) |
+|---|---|---|---|
+| 2021-06-30 (incl. 2022 crash) | 0.75 | −0.322 | loses |
+| 2022-06-30 (the recovery) | 0.54 | **+0.932** | **beats** |
+
+Broad momentum is **crash-vulnerable, not broken**: superb on the recovery window
+(+0.93, beats QQQ) and bad only when the test window straddles the 2022 momentum
+crash. This is textbook momentum-crash risk, and it is exactly the failure mode the
+**vol-target overlay** (Findings 7–8) was built to hedge.
+
+**The synthesis the loop has been converging toward:** breadth fixes deployment
+(Finding 9) + the vol-target overlay hedges the crash (Finding 8) ⇒ run the overlay
+**on the broad universe**. If the overlay lifts the crash-split OOS (−0.32) without
+giving up the recovery-split strength, it would be the first *split-robust* winner.
+That is iteration 8. (Survivorship caveat from Finding 9 still applies — these IS/OOS
+numbers are research-grade.)
+
 ## Recommendation
 
 If trading any of this: favor **classic 12-1 / dual momentum on a diversified,
