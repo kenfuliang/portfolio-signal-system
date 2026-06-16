@@ -138,6 +138,35 @@ of ~0.3 sits in the noise band and must clear a **deflated Sharpe / PSR** test
 before it earns more than a tactical look. Next: (1) fix watchlist deployment,
 (2) re-validate the overlay on the *diversified* universe multi-split + DSR.
 
+## Finding 5 — On the watchlist, the OOS bottleneck is selection re-entry, not sizing
+
+*Iteration 2 via `/evolve-strategy`, 2026-06-16. Ledger run_id
+`2026-06-16T19:45:00+00:00-momentum_12_1-28d2`.*
+
+Finding 4 left a measurement flag: `momentum_12_1` deployed only **~15% mean
+exposure** on the watchlist (confirmed from the backtest Exposure chart). Iteration
+2 changed **one variable** — sizing mode `risk_based → vol_target` (the "percentage"
+exposure lever) — to test whether sizing was the cause.
+
+| Split | Mean exposure | Sharpe | CAGR |
+|---|---|---|---|
+| IS 2017–21  | **0.80** | **+0.47** | **+13.5%** |
+| OOS 2021–26 | **0.14** | −0.59 | −0.85% |
+
+**vol_target sizing fixed deployment *when names are held*** (IS 15%→80%, Sharpe
++0.47). But **OOS exposure stayed ~14%** and OOS Sharpe (−0.59) matched the
+risk_based baseline (−0.59). The bottleneck OOS is **selection, not sizing**: the
+positive-12-1-momentum filter empties the book in the 2022 bear and re-enters too
+slowly (12-month lookback) to catch the 2023–24 recovery — so there is nothing for
+the sizing lever to size. The large decay (1.057) is regime-driven (bull IS, bear→
+recovery OOS).
+
+**Gate: REJECT as an OOS improvement** (ties baseline), but a valuable diagnostic:
+the exposure lever works, yet on a 12-name book what governs OOS is **re-entry
+speed of the selection signal**. Next hypothesis: a faster re-entry rule (shorter
+momentum horizon / trend-MA re-entry) so the strategy rejoins the recovery instead
+of sitting in cash.
+
 ## Recommendation
 
 If trading any of this: favor **classic 12-1 / dual momentum on a diversified,

@@ -7,8 +7,8 @@ Best run per strategy x universe, ranked by fitness then lower decay. Legacy row
 | rank | strategy | universe | OOS Sharpe | OOS CAGR | OOS MaxDD | decay | fitness | run_id | git_sha |
 |---|---|---|---|---|---|---|---|---|---|
 | 1 | vol_target_momentum | watchlist | -0.751 | 0.030 | 15.200 | 0.487 | -1.490 | 2026-06-16T19:00:00+00:00-vol_target_momentum-6023 |  |
-| 2 | vol_target_momentum | diversified | 0.321 | 10.547 | 18.700 | -0.606 |  | 2026-06-16T16:10:54.813442Z-vol_target_momentum-2916 |  |
-| 3 | momentum_12_1 | watchlist | -0.592 | -1.283 | 21.100 | 0.395 |  | 2026-06-16T18:56:25.825159+00:00-momentum_12_1-704c | 707ce04 |
+| 2 | momentum_12_1 | watchlist | -0.591 | -0.845 |  | 1.057 | -1.700 | 2026-06-16T19:45:00+00:00-momentum_12_1-28d2 |  |
+| 3 | vol_target_momentum | diversified | 0.321 | 10.547 | 18.700 | -0.606 |  | 2026-06-16T16:10:54.813442Z-vol_target_momentum-2916 |  |
 | 4 | momentum_12_1 | diversified | -0.633 | -1.165 | 17.200 | 0.487 |  | 2026-06-16T16:10:54.813442Z-momentum_12_1-0f59 |  |
 | 5 | trend_ma | diversified | 0.237 | 6.680 | 14.000 |  |  | 2026-06-16T08:33:23.271876Z-trend_ma-4031 |  |
 | 6 | golden_cross | diversified | -0.274 | 0.495 | 33.400 |  |  | 2026-06-16T08:33:23.271876Z-golden_cross-29e0 |  |
