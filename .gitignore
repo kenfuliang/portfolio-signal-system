@@ -9,6 +9,17 @@ data/
 backtests/
 *.log
 
+# Engine outputs — heavy/derived, not committed...
+# (ignore the CONTENTS, not the dir itself, so the negations below can re-include)
+reports/*
+# ...EXCEPT the experiment ledger (the durable memory; travels with the repo)
+# and the cheap derived leaderboard view.
+!reports/experiments.jsonl
+!reports/leaderboard.md
+
+# Generated LEAN HTML report at repo root (like reports/*.html)
+/report.html
+
 # Python
 __pycache__/
 *.py[cod]
