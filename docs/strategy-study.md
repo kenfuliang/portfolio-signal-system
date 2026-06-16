@@ -246,6 +246,33 @@ split-robust alpha on these two universes. The evidence keeps pointing at the
 diversify, or exiting degraded mode (fundamentals), is the next real lever — not
 more signal/sizing variants.
 
+## Finding 9 — Breadth fixes deployment (the universe lever, confirmed) — but not OOS
+
+*Iteration 6 via `/evolve-strategy`, 2026-06-16. Ledger run_id
+`2026-06-16T22:45:00+00:00-momentum_12_1-882f`. Tests the Finding 6/8 thesis.*
+
+Built a **200-name** cross-section (`build_universe.py --n 200`, monthly rebalance)
+and ran plain `momentum_12_1` — the same signal that under-deployed to ~15% on the
+12-name watchlist.
+
+| Window | Exposure | Sharpe | CAGR |
+|---|---|---|---|
+| IS 2017–21  | **1.07** | **0.75** | **+27.7%** |
+| OOS 2021–26 | 0.46 | −0.322 | −3.0% |
+
+**The universe lever is confirmed:** breadth fixed deployment (IS exposure
+0.15→1.07) and momentum delivered QQQ-like in-sample numbers (27.7% CAGR, 0.75
+Sharpe). This is the structural fix the watchlist could never provide — exactly what
+Findings 1/6/8 pointed to.
+
+**But two brakes keep it an OOS reject:** (1) large decay (0.75→−0.32) on the
+crash-heavy 2021-06-30 split; (2) **survivorship bias** — the universe is built from
+*currently-liquid* names, excluding delisted ones, so the IS is research-grade and
+inflated (per the data rule). Breadth is **necessary** (fixes deployment) but **not
+sufficient** (OOS regime decay remains). Next: multi-split on the broad universe to
+see whether the OOS failure is specific to the 2022-crash split (as in Finding 8),
+plus a survivorship-aware read.
+
 ## Recommendation
 
 If trading any of this: favor **classic 12-1 / dual momentum on a diversified,
