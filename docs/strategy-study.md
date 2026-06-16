@@ -298,6 +298,34 @@ giving up the recovery-split strength, it would be the first *split-robust* winn
 That is iteration 8. (Survivorship caveat from Finding 9 still applies — these IS/OOS
 numbers are research-grade.)
 
+## Finding 11 — The synthesis works on the crash split (breadth + overlay)
+
+*Iteration 8 via `/evolve-strategy`, 2026-06-17. Ledger run_id
+`2026-06-17T00:15:00+00:00-vol_target_momentum-3cec`. Best loop result so far.*
+
+Ran the vol-target overlay **on the broad universe** at the crash split — combining
+the two things that worked: breadth (fixes deployment, Finding 9) + the overlay's
+crash hedge (Finding 8).
+
+| Strategy | IS | OOS | decay |
+|---|---|---|---|
+| **vol_target_momentum** | 0.473 | **+0.209** | 0.264 |
+| momentum_12_1 | 0.75 | **−0.322** | 1.072 |
+
+The overlay **flipped the crash-split OOS from −0.32 to +0.21** (+0.53 Sharpe) and
+cut decay 1.07→0.26 — the predicted crash protection, now realised on a universe
+that also deploys. First time the overlay beats the baseline OOS on the broad
+universe with low decay.
+
+**Still tactical, one test outstanding:** does the overlay give up the *recovery*
+split (baseline broad scored +0.93 there)? Iteration 9 runs that. If the overlay
+holds both regimes it earns satellite; if it trades recovery upside for crash
+protection it is a lower-variance hedge ("same return, less drawdown"). Either way,
+this is the first genuine outcome improvement — and the honest read is that
+price-only momentum still tops out near the noise band, so after this thread closes
+the higher-value lever is **exiting degraded mode (fundamentals/sentiment)**, not
+more price permutations. (Survivorship caveat still applies.)
+
 ## Recommendation
 
 If trading any of this: favor **classic 12-1 / dual momentum on a diversified,
