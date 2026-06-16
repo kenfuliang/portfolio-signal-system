@@ -114,10 +114,14 @@ def run(strategy, window):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--strategies", required=True)
+    ap.add_argument("--universe", default="diversified",
+                    help="diversified (default, ETF sleeves) | watchlist (committed production universe)")
     args = ap.parse_args()
     names = [s.strip() for s in args.strategies.split(",") if s.strip()]
 
-    set_universe_diversified()
+    # watchlist = the committed config/universe.yaml as-is; diversified = override it.
+    if args.universe == "diversified":
+        set_universe_diversified()
     results = {}
     try:
         for i, name in enumerate(names, 1):
@@ -138,7 +142,7 @@ def main():
                 "git_sha": git_sha(),
                 "source": "walk_forward",
                 "strategy": name,
-                "universe": "diversified",
+                "universe": args.universe,
                 "baseline": None,
                 "splits": [
                     {"name": "IS", "start": IS[0], "end": IS[1],
