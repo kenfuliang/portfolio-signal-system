@@ -167,6 +167,32 @@ speed of the selection signal**. Next hypothesis: a faster re-entry rule (shorte
 momentum horizon / trend-MA re-entry) so the strategy rejoins the recovery instead
 of sitting in cash.
 
+## Finding 6 — Three watchlist rejections: the 12-name universe is the problem, not the signal
+
+*Iteration 3 via `/evolve-strategy`, 2026-06-16. Ledger run_id
+`2026-06-16T20:30:00+00:00-roc_momentum-2c5f`.*
+
+Hypothesis: a faster momentum lookback (`roc_momentum`, 6-month) re-enters quicker
+after the 2022 crash than 12-1 momentum and lifts OOS. **Rejected** — roc 6mo was
+*worse* in both windows (OOS −0.87 vs −0.59; IS −0.18 vs +0.47) and deployed less
+(IS exposure 0.53 vs 0.80). A shorter lookback added whipsaw, not better re-entry.
+
+**Meta-pattern across iterations 1–3 (all on the watchlist):**
+
+| Iter | Change vs baseline | OOS result |
+|---|---|---|
+| 1 | vol-target overlay (selection) | reject (−0.75) |
+| 2 | vol_target *sizing* | reject OOS (−0.59); fixed IS deployment only |
+| 3 | faster lookback (6mo) | reject (−0.87) |
+
+No selection or sizing tweak rescues a momentum strategy on **12 concentrated tech
+names** — it under-deploys in/after drawdowns and whipsaws. This re-confirms
+**Finding 1 (universe dominates signal)** from the other direction: the lever isn't
+another signal tweak, it's the **universe**. Stop optimizing selection/sizing on the
+watchlist. Next: take the one thing that *worked* — the vol-target overlay won
+out-of-sample on the **diversified** universe — and harden it there (multi-split +
+deflated Sharpe), and/or broaden the watchlist toward a real cross-section.
+
 ## Recommendation
 
 If trading any of this: favor **classic 12-1 / dual momentum on a diversified,
