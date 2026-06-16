@@ -1,0 +1,39 @@
+# Strategy selection + per-strategy parameters (design: pluggable algorithms).
+# `active` picks which algorithm main.py runs; all share the same universe and
+# the risk layer (config/risk.yaml). Tune params by backtest, not by gut.
+
+active: trend_ma
+
+# Rebalance cadence: daily | weekly | monthly (default daily). Use monthly for
+# broad (~500-name) universes — daily is far too heavy and rotation is monthly anyway.
+rebalance: daily
+
+# --- Trend / momentum ---
+# top_n bumped to 20 for broad-universe selection (pick a real portfolio, not 5/500).
+momentum_12_1: { top_n: 20 }
+roc_momentum:  { top_n: 20, lookback: 126 }
+adx_trend:     { adx_min: 25 }
+
+# --- Breakout ---
+breakout_52w:        { enter_within: 0.01, exit_below: 0.12 }
+donchian:            { entry_lookback: 20, exit_lookback: 10 }
+volatility_breakout: { k: 1.5 }
+keltner_breakout:    { k: 1.5, ema: 20 }
+
+# --- Mean reversion ---
+rsi_reversion:       { rsi_period: 14, rsi_below: 35, rsi_above: 55 }
+bollinger_reversion: { period: 20, k: 2.0 }
+ma_envelope_dip:     { envelope_pct: 0.05 }
+zscore_reversion:    { period: 20, z_enter: 1.5, z_exit: 0.0 }
+
+# --- Allocation / rotation ---
+dual_momentum:    { top_n: 20 }
+sector_rotation:  { top_n: 2, lookback: 126 }
+low_volatility:   { top_n: 20, vol_window: 60 }
+relative_strength: { lookback: 126 }
+vol_adjusted_momentum: { top_n: 20, lookback: 126, vol_window: 60 }
+momentum_runner: { max_positions: 20 }
+# Vol-targeted momentum: same 12-1 signal as momentum_12_1, plus a 200-day trend
+# regime gate and time-series vol targeting (scale name count by target/realized vol).
+vol_target_momentum: { top_n: 20, target_vol: 0.30, vol_window: 20, regime_ma: 200, benchmark: [QQQ, VTI, SMH, SOXX] }
+asymmetric_trend: { breakdown_band: 0.07 }   # robust 5-10% plateau; 7% = middle

@@ -1,0 +1,25 @@
+# Data ingest settings (used by scripts/ingest_data.py).
+# Tunables for the local price-history downloader — config over code.
+# Output is written to data/equity/usa/daily/ in LEAN's format.
+
+source: yfinance              # currently the only implemented source
+
+lookback_years: 10            # how far back to pull daily history
+
+universe:
+  mode: all_liquid            # all_liquid | watchlist_only
+  always_include_universe: true   # never drop config/universe.yaml names (bypass liquidity filter)
+
+# Liquidity filter — what makes the set "liquid" rather than "everything".
+# Universe symbols bypass this when always_include_universe is true.
+liquidity:
+  min_median_dollar_volume: 1000000   # ~$1M/day median close*volume over the history
+  min_rows: 200                       # require >= this many daily bars to be usable
+
+download:
+  batch_size: 50              # symbols per yfinance batch request
+  max_retries: 3              # per-batch retries on failure
+  sleep_between_batches_s: 1.0  # politeness pause to avoid rate limits
+  progress_every: 250         # log a progress line every N symbols processed
+
+adjust: true                  # split/dividend-adjusted prices (yfinance auto_adjust)
