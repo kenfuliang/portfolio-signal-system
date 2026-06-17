@@ -67,6 +67,12 @@ Best run per strategy x universe, ranked by fitness then lower decay. Legacy row
 | 59 | momentum_runner | broad | 0.014 | 3.438 | 36.800 |  |  | 2026-06-16T15:22:49.098474Z-momentum_runner-ff1e |  |
 | 60 | equal_weight_hold | broad | 0.669 | 21.263 | 36.400 |  |  | 2026-06-16T15:22:49.098474Z-equal_weight_hold-dafc |  |
 | 61 | low_volatility | broad_pit | 0.157 | 5.345 | 10.900 |  |  | 2026-06-17T07:00:00+00:00-low_volatility-a39e |  |
+| 62 | dual_momentum | watchlist | 0.418 | 10.543 | 21.800 |  |  | 2026-06-17T03:36:40.398360+00:00-dual_momentum-550d | 1cb7de8 |
+| 63 | rsi_reversion | watchlist | -0.183 | 2.784 | 12.300 |  |  | 2026-06-17T03:37:22.236440+00:00-rsi_reversion-5fda | 1cb7de8 |
+| 64 | zscore_reversion | watchlist | 0.224 | 6.232 | 13.000 |  |  | 2026-06-17T03:37:56.669849+00:00-zscore_reversion-8d5f | 1cb7de8 |
+| 65 | sector_rotation | watchlist | -0.038 | 3.877 | 8.800 |  |  | 2026-06-17T03:38:30.837657+00:00-sector_rotation-5bf9 | 1cb7de8 |
+| 66 | golden_cross | watchlist | 0.236 | 6.369 | 15.200 |  |  | 2026-06-17T03:39:08.038182+00:00-golden_cross-1e2a | 1cb7de8 |
+| 67 | relative_strength | watchlist | 0.310 | 7.317 | 14.900 |  |  | 2026-06-17T03:39:44.161800+00:00-relative_strength-d09a | 1cb7de8 |
 
 ## Baselines (buy-and-hold reference)
 
