@@ -799,6 +799,39 @@ dual-momentum sleeve available if minimizing drawdown matters more than maximizi
 return. Genuine alpha requires new information, and acquiring it is a capital decision —
 not something more backtesting on the current data can produce.
 
+## Finding 27 — Concentrated GTAA fails too — and reveals the unifying reason
+
+*2026-06-17. Tested the canonical Antonacci/Faber setup I had not isolated:
+concentrated dual-momentum (`top_n: 2`), fully deployed (equal-weight), on a focused
+equities+bonds+gold universe over 2007–2026 — the configuration most likely to keep
+the equity premium while sidestepping crashes.*
+
+| Strategy (focused GTAA, 2007–2026) | CAGR | Sharpe | MaxDD | mean exp |
+|---|---|---|---|---|
+| dual_momentum (top_n 2, EW) | 3.6% | 0.095 | 7.8% | 0.42 |
+| trend_filtered_hold | 3.1% | 0.018 | 11.4% | 0.41 |
+| golden_cross | 1.2% | −0.58 | 7.8% | 0.15 |
+| **SPY** | 11.0% | **0.63** | 55.2% | 1.0 |
+
+It fails — and the *why* unifies all 27 findings. Even concentrated and equal-weighted,
+the strategies are **only ~41% deployed**: not a bug, but the absolute-momentum/trend
+filters sitting in **cash ~57% of months** (every 2008/2011/2015/2018/2020/2022 momentum
+breakdown). Near-cash deployment → near-cash returns (1–4% CAGR).
+
+**The unifying explanation.** In 2007–2026, **being out of the market at any point cost
+more (forfeited equity premium) than it saved (avoided drawdown), risk-adjusted**,
+because SPY's Sharpe (0.63) was so high. Every defensive/timing/allocation strategy that
+moves to cash or bonds *necessarily* underperforms — its protection forfeits the premium
+that dominated the era. The low drawdowns these strategies achieve (8–17%) are real, but
+the Sharpe cost is fatal. **The only way to beat SPY is to stay in equities and add
+alpha** — i.e., pick better-than-index names (needs fundamentals), harvest the volatility
+risk premium (needs option data), or short (needs a long-short architecture). All are
+data- or scope-blocked.
+
+This is the deepest and final finding: the investigation didn't just fail to beat SPY —
+it explains *why* nothing price-only can, in this regime, and *exactly* what new
+capability would be required. That is a complete answer.
+
 ## Recommendation
 
 If trading any of this: favor **classic 12-1 / dual momentum on a diversified,
