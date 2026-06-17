@@ -522,6 +522,34 @@ or they deadlock — a near-miss that almost made us wrongly revoke a real resul
 risk layer needs a gross-exposure cap. The satellite stands; the path to core is
 controlling leverage and proving the drawdown profile, not finding more signal.
 
+## Finding 18 — The leverage is a rebalancing gap (held winners never trimmed)
+
+*2026-06-17. Added a gross-exposure cap (`risk.yaml max_gross_exposure_pct`,
+`enforce_caps`, 2 tests) to chase Finding 17's leverage — but it doesn't bind, and
+diagnosing why found the real cause.*
+
+Finding 17 flagged the overlay running to 1.66–2.0× exposure. Added a gross-exposure
+cap to `enforce_caps` (unit-tested). It changed nothing — because the leverage is **not
+in the sizing**. The `[caps]` log shows the core sleeve cap (0.70) already binds the
+*target* weights to 0.70, yet realized exposure still reaches 2.0 on 2,211 days.
+
+**Root cause (`main.py`):** only `Action.BUY` decisions are sized — `set_holdings` runs
+over `targets`, which contains buys only. **HELD positions (`Action.HOLD`) are never
+re-sized.** So a held winner rides and compounds with its price, drifting far above its
+target; over 9 years gross exposure balloons to 2.0×. The gross cap can't help — it only
+ever sees the buy targets, not the drifted holds.
+
+**This affects every backtest in the study** (all carry this uncontrolled drift), and it
+is partly a *design* choice — `momentum_runner` deliberately lets winners run. So
+"rebalance holds to target each period" vs "let winners run" is a strategy-design
+decision, not a clean bug fix, and changing the default would re-write all prior results.
+**Surfaced for a human decision rather than auto-changed.**
+
+The gross-exposure cap is kept regardless: it is a correct, tested guardrail against
+raw-target leverage (20 names × 10% = 200%), even though the sleeve cap binds tighter on
+the broad universe. The satellite (Finding 16/17) stands, but its leverage caveat is now
+precisely understood: realized exposure drift from un-trimmed holds, not sizing.
+
 ## Recommendation
 
 If trading any of this: favor **classic 12-1 / dual momentum on a diversified,

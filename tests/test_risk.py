@@ -19,6 +19,29 @@ def test_per_name_cap_clamps(risk_cfg):
     assert any("name cap" in n for n in notes)
 
 
+def test_gross_exposure_cap_scales_down(risk_cfg):
+    # 20 names at the 10% per-name cap = 200% gross -> must be scaled to the gross cap.
+    cfg = {**risk_cfg, "diversification": {**risk_cfg["diversification"],
+                                           "max_gross_exposure_pct": 0.95}}
+    # spread across sleeves so per-sleeve caps don't bind first: 7 core (0.70) +
+    # 4 satellite (0.40) = 1.10 gross, each sleeve within its cap.
+    targets = {f"C{i}": 0.10 for i in range(7)}
+    targets.update({f"S{i}": 0.10 for i in range(4)})
+    sleeves = {k: ("core" if k.startswith("C") else "satellite") for k in targets}
+    adj, notes = enforce_caps(targets, sleeves, {}, cfg)
+    assert sum(adj.values()) <= 0.95 + 1e-9
+    assert any("gross-exposure cap" in n for n in notes)
+
+
+def test_gross_exposure_cap_disabled_when_null(risk_cfg):
+    # null/absent gross cap must NOT scale a modest book (no phantom clamp).
+    cfg = {**risk_cfg, "diversification": {**risk_cfg["diversification"],
+                                           "max_gross_exposure_pct": None}}
+    adj, notes = enforce_caps({"A": 0.10, "B": 0.10}, {"A": "core", "B": "core"}, {}, cfg)
+    assert adj == {"A": 0.10, "B": 0.10}
+    assert not any("gross" in n for n in notes)
+
+
 def test_sleeve_cap_clamps(risk_cfg):
     # three names each at 10% in core (cap 0.70) is fine; push core over 0.70
     targets = {f"C{i}": 0.10 for i in range(8)}          # 0.80 total in core

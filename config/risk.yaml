@@ -22,6 +22,8 @@ diversification:
                               # per-name=sector mapping would falsely cap every
                               # name at this value. Re-enable once sectors wired.
   min_cash_buffer_pct: 0.05
+  max_gross_exposure_pct: 0.95   # cap total deployment (no unintended leverage);
+                                 # null disables. 0.95 honors the 5% cash buffer.
 
 # --- Leveraged / single-stock ETF rules (AXTX-type) ---
 leveraged:
