@@ -736,6 +736,37 @@ values **drawdown reduction** over return — they cut drawdown 2–7× at a lar
 The one untested lever that could change the answer is **new information (fundamentals/
 sentiment)**, which remains gated on a paid-data decision.
 
+## Finding 25 — Deployment fix ~triples defensive Sharpe, but still short of SPY
+
+*2026-06-17. The multi-asset allocation strategies were ~50% in cash (ATR-sizer
+under-deployment). Re-ran with full deployment via `vol_target` sizing (inverse-vol,
+defensive 10% vol target) over 2007–2026.*
+
+The low returns in Finding 23/24 were partly an *implementation* drag, not the
+strategy: the strategies sat ~50% in cash.
+
+| Strategy (multi-asset, 2007–2026) | CAGR | Sharpe | MaxDD |
+|---|---|---|---|
+| risk_parity — under-deployed | 3.4% | 0.062 | 16.8% |
+| **risk_parity — deployed** | 4.2% | **0.17** | 17.2% |
+| dual_momentum — deployed | 4.1% | 0.148 | 10.6% |
+| **SPY** | 11.0% | **0.63** | 55.2% |
+
+Fixing deployment **nearly tripled** risk-parity's Sharpe (0.06 → 0.17) — a real
+improvement worth keeping in mind for any defensive build. But even fully deployed,
+multi-asset defense tops out at **Sharpe ~0.17**, far below SPY. The cause is
+era-fundamental: 2007–2026 paired an exceptional US-equity bull with the 2021–24 bond
+crash, so the bond-heavy diversifiers couldn't compete (risk-parity's celebrated
+historical Sharpe came from the secular bond bull that has since reversed). No vol
+target / leverage setting fixes it — leverage doesn't change Sharpe.
+
+**This closes the defensive thread too.** Across price-only stocks (F1–22), multi-asset
+allocation in two windows (F23–24), and now properly-deployed defense (F25), nothing on
+the available data beats SPY risk-adjusted. The under-deployment fix is a genuine
+engineering lesson (always verify deployed capital — F5, F25), but it does not change the
+verdict. The remaining lever is unchanged: **new information (fundamentals)**, gated on a
+paid-data decision.
+
 ## Recommendation
 
 If trading any of this: favor **classic 12-1 / dual momentum on a diversified,
