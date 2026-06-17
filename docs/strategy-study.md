@@ -15,6 +15,19 @@ configs referenced below.*
 > not our backtest numbers. The only real test left is forward paper-trading of a
 > simple, literature-backed rule.
 >
+> **Session addendum (Findings 4–28, June 2026).** An independent multi-iteration
+> investigation (ledger: `reports/experiments.jsonl`) re-derived and *strengthened* this
+> verdict under harder rigor: a point-in-time universe (kills selection look-ahead), a
+> full 2007–2026 cycle (incl. 2008), and fixes for a circuit-breaker deadlock,
+> exposure-drift leverage, and a per-name-cap under-deployment bug. Across every strategy
+> family, three universe types, two regimes, and properly deployed/unleveraged: **nothing
+> beats buy-and-hold SPY risk-adjusted.** Finding 27/28 give the mechanism — in this era,
+> any move to cash forfeits more equity premium than it saves, and price-based
+> equity-tilting is value-destructive vs the index. Beating SPY needs information beyond
+> price (fundamentals / option VRP / shorting), which is data-blocked. **Evidence-based
+> recommendation: index SPY**, or `dual_momentum` if minimizing drawdown matters more than
+> return (best-validated defensive rule, suitable for the forward paper-trade).
+>
 > **Measurement correction.** Earlier, four harness bugs were found and fixed; earlier
 > absolute numbers in this doc were also distorted by them:
 > 1. **Phantom sector cap.** `main.py` mapped each name to its own "sector" and
