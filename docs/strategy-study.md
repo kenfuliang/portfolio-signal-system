@@ -701,6 +701,41 @@ failure is substantially driven by an unusually diversification-hostile decade, 
 method. A longer history (pre-2016) is needed to test them fairly, which is another
 data-acquisition decision.
 
+## Finding 24 — Full-cycle test (2007–2026, incl. 2008): still nothing beats SPY
+
+*2026-06-17. Extended the 12 multi-asset ETFs' history to 2006 (free yfinance pull,
+`lookback_years` 20) and re-ran the allocation strategies over a full cycle that
+finally includes a bond-diversifying crash (2008).*
+
+Finding 23 said allocation strategies need a 2008-style crash (where bonds rally) to be
+judged fairly. Provided it:
+
+| Strategy (multi-asset, 2007–2026) | CAGR | Sharpe | MaxDD |
+|---|---|---|---|
+| relative_strength | 4.0% | 0.161 | 8.0% |
+| risk_parity | 3.4% | 0.062 | 16.8% |
+| dual_momentum | 2.7% | −0.064 | 10.4% |
+| **SPY (2007–2026)** | 11.0% | **0.63** | −55.2% |
+
+Even with 2008 in-sample, **none beats SPY risk-adjusted.** The diversification *did* its
+job on drawdown — cutting max drawdown from SPY's **55%** to 8–17% — but the slow
+trend/momentum signals that dodged 2008 also **missed most of the 2009–2021 bull**,
+leaving returns at 2.7–4% vs SPY's 11%. SPY's Sharpe (0.63, even with a 55% drawdown) is
+simply too high to beat.
+
+**The era-level verdict:** 2007–2026 was an exceptional period for US equities — indexing
+was nearly unbeatable on a risk-adjusted basis, and no price-only stock strategy (F1–22),
+nor multi-asset allocation in either the 2017–2026 or full 2007–2026 window (F23–24),
+clears it. This is now robust across **strategy families AND market regimes**.
+
+**The honest bottom line of the entire investigation:** with the data available (price
+only, liquid survivors, US-equity-dominated 2007–2026 sample), **buy-and-hold SPY is the
+risk-adjusted benchmark to beat, and nothing here beats it.** The defensive strategies
+(allocation, the vol-target overlay, low-vol) are genuinely useful only if an investor
+values **drawdown reduction** over return — they cut drawdown 2–7× at a large return cost.
+The one untested lever that could change the answer is **new information (fundamentals/
+sentiment)**, which remains gated on a paid-data decision.
+
 ## Recommendation
 
 If trading any of this: favor **classic 12-1 / dual momentum on a diversified,
