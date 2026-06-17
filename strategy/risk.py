@@ -108,6 +108,18 @@ def enforce_caps(
                 adj[sym] *= scale
         notes.append("leveraged cap")
 
+    # gross-exposure cap: keep total deployed at/below the limit so per-name caps
+    # can't sum into unintended leverage (e.g. 20 names * 10% = 200% gross). Disabled
+    # when max_gross_exposure_pct is null. Default to (1 - min_cash_buffer) when set.
+    max_gross = div.get("max_gross_exposure_pct")
+    if max_gross:
+        gross = sum(adj.values())
+        if gross > max_gross and gross > 0:
+            scale = max_gross / gross
+            for sym in adj:
+                adj[sym] *= scale
+            notes.append("gross-exposure cap")
+
     return adj, notes
 
 
