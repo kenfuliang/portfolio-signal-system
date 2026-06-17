@@ -13,10 +13,21 @@ def test_position_size_higher_atr_means_smaller_position(risk_cfg):
     assert high.target_weight <= low.target_weight
 
 
-def test_per_name_cap_clamps(risk_cfg):
-    adj, notes = enforce_caps({"AAA": 0.95}, {"AAA": "core"}, {}, risk_cfg)
-    assert adj["AAA"] == risk_cfg["diversification"]["max_per_name_pct"]
+def test_per_name_cap_clamps_broad_book(risk_cfg):
+    # 12 names: equal-weight share (0.95/12 ~= 0.079) < the 10% cap, so the cap binds.
+    targets = {f"N{i}": 0.30 for i in range(12)}
+    sleeves = {k: "core" for k in targets}
+    adj, notes = enforce_caps(targets, sleeves, {}, risk_cfg)
+    assert all(w <= risk_cfg["diversification"]["max_per_name_pct"] + 1e-9 for w in adj.values())
     assert any("name cap" in n for n in notes)
+
+
+def test_per_name_cap_floors_at_equal_weight_for_small_book(risk_cfg):
+    # 2 names: a fixed 10% cap would force ~80% cash. The equal-weight floor lets the
+    # concentrated book deploy (study Finding 28). It must NOT be clamped to 2*10%=20%.
+    targets = {"A": 0.95, "B": 0.95}
+    adj, _ = enforce_caps(targets, {"A": "core", "B": "core"}, {}, risk_cfg)
+    assert sum(adj.values()) > 0.30          # deploys (sleeve cap 0.70), not stuck at 0.20
 
 
 def test_gross_exposure_cap_scales_down(risk_cfg):

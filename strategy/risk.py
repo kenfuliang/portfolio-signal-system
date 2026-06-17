@@ -65,10 +65,17 @@ def enforce_caps(
     notes: list[str] = []
     adj = dict(targets)
 
-    # per-name cap
+    # per-name cap — but FLOORED at the equal-weight share so a concentrated book can
+    # still fully deploy. A fixed cap (e.g. 10%) tuned for a ~200-name universe forces
+    # cash when a strategy holds few names (5 names * 10% = 50% max) — study Finding 28.
+    # For broad universes (1-buffer)/n < configured cap, so this is a no-op there; it
+    # only RAISES the cap for concentrated books (never lowers it).
+    buffer = div.get("min_cash_buffer_pct") or 0.0
+    eq_share = (1.0 - buffer) / max(1, len(adj))
+    name_cap = max(div["max_per_name_pct"], eq_share)
     for sym, w in adj.items():
-        if w > div["max_per_name_pct"]:
-            adj[sym] = div["max_per_name_pct"]; notes.append(f"{sym}: name cap")
+        if w > name_cap:
+            adj[sym] = name_cap; notes.append(f"{sym}: name cap")
 
     # per-sector cap — skipped when max_per_sector_pct is null/0 (no real sector
     # data: a synthetic per-name=sector mapping must not masquerade as a limit).
