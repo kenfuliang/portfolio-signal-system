@@ -66,6 +66,7 @@ Best run per strategy x universe, ranked by fitness then lower decay. Legacy row
 | 58 | low_volatility | broad | -0.119 | 3.280 | 20.700 |  |  | 2026-06-16T15:22:49.098474Z-low_volatility-ca59 |  |
 | 59 | momentum_runner | broad | 0.014 | 3.438 | 36.800 |  |  | 2026-06-16T15:22:49.098474Z-momentum_runner-ff1e |  |
 | 60 | equal_weight_hold | broad | 0.669 | 21.263 | 36.400 |  |  | 2026-06-16T15:22:49.098474Z-equal_weight_hold-dafc |  |
+| 61 | low_volatility | broad_pit | 0.157 | 5.345 | 10.900 |  |  | 2026-06-17T07:00:00+00:00-low_volatility-a39e |  |
 
 ## Baselines (buy-and-hold reference)
 

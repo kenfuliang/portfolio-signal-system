@@ -585,6 +585,33 @@ NOTE: `rebalance_holds` and the survivorship correction change the exposure/retu
 **all earlier findings** — their numbers were leveraged and/or look-ahead. This finding
 is the corrected baseline; treat Findings 9–17's magnitudes as superseded.
 
+## Finding 20 — Low-vol also fails: price-only investigation conclusively closed
+
+*2026-06-17. Ledger run_id `2026-06-17T07:00:00+00:00-low_volatility-a39e`.*
+
+Tested the low-volatility anomaly — a genuinely different, well-evidenced factor — on
+the rigorous basis (de-biased universe, `rebalance_holds`, unleveraged):
+
+| Strategy (PIT, de-biased) | CAGR | Sharpe | MaxDD |
+|---|---|---|---|
+| low_volatility | 5.3% | **0.157** | 10.9% |
+| vol-target overlay (de-levered) | 8.0% | 0.297 | 21.1% |
+| SPY | 14.1% | **0.53** | 32.5% |
+
+Low-vol **also fails to beat SPY risk-adjusted** (0.157 ≪ 0.53): very low drawdown
+(10.9%) but far too little return. The low-vol anomaly does not produce a Sharpe edge
+on this universe.
+
+**Conclusion — three distinct families, one answer.** Momentum (all variants), the
+vol-target overlay, and low-volatility have each been tested on de-biased,
+properly-rebalanced, unleveraged data, and **none beats SPY buy-and-hold on a
+risk-adjusted basis.** Defensive factors cut drawdown but keep Sharpe below SPY;
+momentum under-deploys or whipsaws; the one apparent winner was leverage. **The
+price-only investigation is closed.** The only remaining lever is the one deferred
+since the start and still blocked: **new information (fundamentals/sentiment), which
+requires a paid-data decision.** The durable output of this work is not a
+market-beating strategy but a rigorous, honest "no" and the tooling that produces it.
+
 ## Recommendation
 
 If trading any of this: favor **classic 12-1 / dual momentum on a diversified,
