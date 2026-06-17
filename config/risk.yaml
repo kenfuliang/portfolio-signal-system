@@ -17,7 +17,8 @@ sleeves:
 
 # --- Diversification caps ---
 diversification:
-  max_per_name_pct: 0.10
+  max_per_name_pct: 0.10         # floored at the equal-weight share so concentrated
+                                #   universes still deploy (Finding 28); no-op when 1/n < this
   max_per_sector_pct: null    # disabled: no real sector data yet. A synthetic
                               # per-name=sector mapping would falsely cap every
                               # name at this value. Re-enable once sectors wired.
