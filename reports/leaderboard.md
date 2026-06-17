@@ -7,14 +7,14 @@ Best run per strategy x universe, ranked by fitness then lower decay. Legacy row
 | rank | strategy | universe | OOS Sharpe | OOS CAGR | OOS MaxDD | decay | fitness | run_id | git_sha |
 |---|---|---|---|---|---|---|---|---|---|
 | 1 | momentum_12_1 | broad | 0.932 |  |  | -0.395 | 0.600 | 2026-06-16T23:30:00+00:00-momentum_12_1-04fd |  |
-| 2 | vol_target_momentum | broad_pit | 0.510 |  |  | -0.305 | 0.300 | 2026-06-17T03:00:00+00:00-vol_target_momentum-1ec8 |  |
+| 2 | vol_target_momentum | broad_pit | 0.475 |  |  | -0.297 | 0.420 | 2026-06-17T04:00:00+00:00-vol_target_momentum-b299 |  |
 | 3 | vol_target_momentum | broad | 0.336 |  |  | 0.082 | 0.180 | 2026-06-17T01:00:00+00:00-vol_target_momentum-cd67 |  |
 | 4 | vol_target_momentum | diversified | 0.278 |  |  | -0.541 | 0.010 | 2026-06-16T21:15:00+00:00-vol_target_momentum-250a |  |
 | 5 | vol_target_momentum | watchlist | -0.751 | 0.030 | 15.200 | 0.487 | -1.490 | 2026-06-16T19:00:00+00:00-vol_target_momentum-6023 |  |
 | 6 | roc_momentum | watchlist | -0.865 | -1.783 |  | 0.685 | -1.550 | 2026-06-16T20:30:00+00:00-roc_momentum-2c5f |  |
 | 7 | momentum_12_1 | watchlist | -0.591 | -0.845 |  | 1.057 | -1.700 | 2026-06-16T19:45:00+00:00-momentum_12_1-28d2 |  |
 | 8 | momentum_12_1 | diversified | 0.608 | 19.337 | 21.900 | -0.648 |  | 2026-06-16T21:03:42.408994+00:00-momentum_12_1-dab9 | 7663e99 |
-| 9 | momentum_12_1 | broad_pit | -0.216 | -0.925 | 25.400 | 0.394 |  | 2026-06-17T02:18:30.382890+00:00-momentum_12_1-26cc | f291360 |
+| 9 | momentum_12_1 | broad_pit | 0.422 | 17.883 | 28.300 | -0.212 |  | 2026-06-17T02:36:52.547547+00:00-momentum_12_1-efb3 | ff5d19c |
 | 10 | trend_ma | diversified | 0.237 | 6.680 | 14.000 |  |  | 2026-06-16T08:33:23.271876Z-trend_ma-4031 |  |
 | 11 | golden_cross | diversified | -0.274 | 0.495 | 33.400 |  |  | 2026-06-16T08:33:23.271876Z-golden_cross-29e0 |  |
 | 12 | roc_momentum | diversified | -0.023 | 3.921 | 15.500 |  |  | 2026-06-16T08:33:23.271876Z-roc_momentum-8a90 |  |
