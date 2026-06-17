@@ -636,6 +636,38 @@ Sharpe. The "no price-only alpha" conclusion is now robust across the strategy s
 an artifact of testing only momentum. dual_momentum stands as the best *defensive*
 price-only option (consistent with original-study Findings 1–3).
 
+## Finding 22 — Full corrected leaderboard: 21 strategies, none beats SPY (exhaustive)
+
+*2026-06-17. The entire strategy zoo backtested on the rigorous basis
+(de-biased PIT universe, `rebalance_holds`, no deadlock) vs SPY. Leaderboard:
+`reports/leaderboard.md` / `reports/tournament.json`.*
+
+| rank | strategy | Sharpe | MaxDD |
+|---|---|---|---|
+| 1 | dual_momentum | **0.418** | 21.8 |
+| 2 | relative_strength | 0.31 | 14.9 |
+| 3 | donchian | 0.293 | 15.8 |
+| 4 | macd | 0.282 | 16.0 |
+| 5–11 | trend_ensemble / champion_trend_haven / trend_filtered_hold / equal_weight_hold / golden_cross / adx_trend / zscore_reversion | 0.22–0.26 | 13–20 |
+| 12+ | breakouts, trend_ma, mean-reversion, broken configs | ≤0.15 → negative | — |
+| — | **SPY** | **0.53** | 32.5 |
+| — | QQQ | 0.68 | 34.5 |
+
+**Exhaustive verdict: not one of 21 strategies — spanning every family in the codebase —
+beats SPY risk-adjusted.** The zoo tops out at `dual_momentum` (0.418), with the
+trend/breakout cluster at 0.22–0.31 and mean-reversion negative. Every apparent edge in
+this study traced to a bias we then corrected (look-ahead, deadlock, leverage); with
+those removed, price-only signals do not beat indexing.
+
+**The price-only investigation is complete — there is no untested strategy left.** The
+best honest outputs are: (1) **dual_momentum** as the most robust *defensive* price-only
+strategy (lower drawdown than SPY); (2) the verdict that **new information
+(fundamentals/sentiment), not more price engineering, is the only remaining lever** — and
+it is gated on a paid-data decision. The lasting deliverable is the rigorous method and
+tooling (point-in-time universe, experiment ledger, gross cap, `rebalance_holds`,
+deflated-Sharpe discipline) that turned a pile of flattering backtests into a trustworthy
+conclusion.
+
 ## Recommendation
 
 If trading any of this: favor **classic 12-1 / dual momentum on a diversified,

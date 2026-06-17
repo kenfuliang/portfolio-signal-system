@@ -73,6 +73,21 @@ Best run per strategy x universe, ranked by fitness then lower decay. Legacy row
 | 65 | sector_rotation | watchlist | -0.038 | 3.877 | 8.800 |  |  | 2026-06-17T03:38:30.837657+00:00-sector_rotation-5bf9 | 1cb7de8 |
 | 66 | golden_cross | watchlist | 0.236 | 6.369 | 15.200 |  |  | 2026-06-17T03:39:08.038182+00:00-golden_cross-1e2a | 1cb7de8 |
 | 67 | relative_strength | watchlist | 0.310 | 7.317 | 14.900 |  |  | 2026-06-17T03:39:44.161800+00:00-relative_strength-d09a | 1cb7de8 |
+| 68 | trend_ma | watchlist | 0.145 | 5.436 | 16.800 |  |  | 2026-06-17T03:42:06.168597+00:00-trend_ma-aa9c | fe153ee |
+| 69 | macd | watchlist | 0.282 | 6.931 | 16.000 |  |  | 2026-06-17T03:42:45.199937+00:00-macd-ac6e | fe153ee |
+| 70 | adx_trend | watchlist | 0.225 | 6.364 | 14.500 |  |  | 2026-06-17T03:43:32.882471+00:00-adx_trend-8e5e | fe153ee |
+| 71 | breakout_52w | watchlist | 0.148 | 5.441 | 15.000 |  |  | 2026-06-17T03:44:09.015066+00:00-breakout_52w-3612 | fe153ee |
+| 72 | donchian | watchlist | 0.293 | 7.012 | 15.800 |  |  | 2026-06-17T03:44:44.019447+00:00-donchian-702d | fe153ee |
+| 73 | volatility_breakout | watchlist | 0.064 | 4.641 | 17.700 |  |  | 2026-06-17T03:45:20.426826+00:00-volatility_breakout-981b | fe153ee |
+| 74 | keltner_breakout | watchlist | 0.130 | 5.286 | 16.100 |  |  | 2026-06-17T03:45:58.280511+00:00-keltner_breakout-7dbb | fe153ee |
+| 75 | bollinger_reversion | watchlist | 0.007 | 4.208 | 12.900 |  |  | 2026-06-17T03:46:32.814551+00:00-bollinger_reversion-076b | fe153ee |
+| 76 | ma_envelope_dip | watchlist | -0.055 | 3.139 | 24.300 |  |  | 2026-06-17T03:47:07.606179+00:00-ma_envelope_dip-fd8c | fe153ee |
+| 77 | champion_trend_haven | watchlist | 0.259 | 6.548 | 19.700 |  |  | 2026-06-17T03:47:46.121077+00:00-champion_trend_haven-8e55 | fe153ee |
+| 78 | risk_managed_growth | watchlist | -1.700 | 1.224 | 2.800 |  |  | 2026-06-17T03:48:18.783863+00:00-risk_managed_growth-dfbe | fe153ee |
+| 79 | trend_filtered_hold | watchlist | 0.250 | 6.496 | 13.200 |  |  | 2026-06-17T03:48:55.554605+00:00-trend_filtered_hold-3778 | fe153ee |
+| 80 | equal_weight_hold | watchlist | 0.239 | 6.410 | 14.800 |  |  | 2026-06-17T03:49:33.484536+00:00-equal_weight_hold-ec08 | fe153ee |
+| 81 | asymmetric_trend | watchlist | -1.700 | 1.224 | 2.800 |  |  | 2026-06-17T03:50:07.290453+00:00-asymmetric_trend-297a | fe153ee |
+| 82 | trend_ensemble | watchlist | 0.260 | 6.591 | 13.200 |  |  | 2026-06-17T03:50:43.323950+00:00-trend_ensemble-0da0 | fe153ee |
 
 ## Baselines (buy-and-hold reference)
 
