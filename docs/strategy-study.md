@@ -832,6 +832,39 @@ This is the deepest and final finding: the investigation didn't just fail to bea
 it explains *why* nothing price-only can, in this regime, and *exactly* what new
 capability would be required. That is a complete answer.
 
+## Finding 28 — Pure-equity rotation fails too; closes both halves of the thesis
+
+*2026-06-17. Tested Finding 27's last open door — "stay in equities, never go to
+cash, tilt to strength" — via relative_strength on a pure-equity ETF set
+{SPY,QQQ,IWM,EFA,EEM}, fully deployed, 2007–2026.*
+
+Two results, one engineering, one strategic:
+
+**Engineering (real, reusable):** the first run was crippled by the **10% per-name
+cap** — `max_per_name_pct: 0.10` is tuned for a 200-name universe, but on a 5-asset
+universe it clamps each position to 10%, forcing ≤30% deployment. *Every* prior
+concentrated-universe test (multi-asset F23–25, GTAA F27, this) was silently
+under-deployed by this cap. **The per-name cap must scale with universe size.** Re-ran
+with `max_per_name_pct: 0.40`.
+
+**Strategic (the verdict):** even fairly deployed, relative_strength on pure equities
+gives **CAGR 4.8%, Sharpe 0.163, MaxDD 41%** — far below SPY (0.63), with *higher*
+drawdown. The equity-rotation tilt adds whipsaw and concentration risk without alpha;
+chasing the recent-strongest equities loses to simply holding the index.
+
+This closes **both halves** of Finding 27's only-remaining thesis:
+- *Stay defensive* (cash/bonds) → forfeits the equity premium → fails (F23–27).
+- *Stay invested + tilt to strength* → the tilt is value-destructive → fails (F28).
+
+**The complete, final result:** on this data, the only thing that beats every strategy
+is **holding the index itself**. Every attempt to choose *which* equities, *when* to
+hold them, or *what to diversify into* loses to buy-and-hold SPY — because the era's
+equity premium was so large and so steady that both market-timing and security-selection
+(on price alone) destroyed value relative to it. Beating SPY requires information beyond
+price (fundamentals / options VRP / shorting), all data- or scope-blocked. **Index SPY is
+the evidence-backed answer for this data; genuine alpha needs new information.** This is
+the end of what price-based research can determine.
+
 ## Recommendation
 
 If trading any of this: favor **classic 12-1 / dual momentum on a diversified,
