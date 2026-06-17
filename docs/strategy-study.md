@@ -418,6 +418,35 @@ the correction is decisive: it caught a large inflation, which is exactly why it
 worth doing. The honest study verdict (no robust price-only alpha) is now *stronger*,
 not weaker.
 
+## Finding 15 — The overlay edge SURVIVES de-biasing (it strengthens) — first real signal
+
+*2026-06-17. Ledger run_id `2026-06-17T03:00:00+00:00-vol_target_momentum-1ec8`.
+Re-tests the iter-8 synthesis on the point-in-time universe.*
+
+Finding 14 showed the momentum baseline's strength was mostly look-ahead. Re-ran the
+overlay vs baseline on the **point-in-time** universe, crash split:
+
+| Strategy | IS | OOS |
+|---|---|---|
+| **vol_target_momentum** | 0.205 | **+0.51** |
+| momentum_12_1 | 0.178 | −0.216 |
+
+**The contrast is the whole point.** The baseline collapsed under de-biasing
+(IS 0.75→0.18, Finding 14), but the overlay's crash-split edge **survived and
+strengthened** (OOS +0.51 vs the look-ahead +0.209). Mechanistically sound: the
+baseline's inflation came from *name-selection* look-ahead, while the overlay's edge
+is *regime timing* (cut exposure into the 2022 crash) — independent of which names are
+in the universe, so the survivorship correction doesn't touch it. This is the **first
+result that gets stronger, not weaker, under rigorous correction** — evidence it is a
+real (if modest) effect, not an artifact.
+
+**Not promoted yet — discipline holds.** This is one split (the crash split, which
+structurally favors a hedge). Before satellite it must: (1) clear the PIT **recovery
+split** (does it give up upside, as on the look-ahead universe?), (2) be compared to
+buy-hold (SPY 0.53 / QQQ 0.68), (3) pass a **deflated Sharpe** for the trial count.
+Coverage survivorship (delisted names absent) still applies. But for the first time the
+loop has a candidate worth hardening rather than retiring.
+
 ## Recommendation
 
 If trading any of this: favor **classic 12-1 / dual momentum on a diversified,
