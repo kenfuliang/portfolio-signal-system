@@ -386,6 +386,38 @@ autonomous-loop step. The price-momentum loop is honestly exhausted (Findings 1�
 ceiling proven); the fundamentals loop is **blocked here pending that decision**. The
 autonomous loop is paused rather than fall back to more price permutations (circling).
 
+## Finding 14 — Measurement correction: Finding 9's IS 0.75 was mostly look-ahead
+
+*Survivorship work, 2026-06-17. Ledger: `momentum_12_1` / universe `broad_pit`.
+Added point-in-time selection (`build_universe.py --asof`).*
+
+`build_universe.py` ranked liquidity over the **full 2017→2026 history**, so it
+selected names using hindsight about which stayed liquid (CVNA — a 2017 IPO —, ARKK,
+2021 IPOs…). Added `--asof`: rank liquidity using only the trailing year **before**
+the backtest start (point-in-time, no future data). The two top-200 universes differ
+by **38 names (19%)** — all look-ahead-only picks.
+
+Re-ran the Finding 9 test (`momentum_12_1`, broad, monthly) on the de-biased universe:
+
+| Universe (same strategy & split) | IS Sharpe | OOS Sharpe |
+|---|---|---|
+| look-ahead (Finding 9) | **0.75** | −0.322 |
+| **point-in-time** | **0.178** | −0.216 |
+
+**Finding 9's headline collapses.** The strong in-sample momentum (0.75, +27.7% CAGR)
+was **mostly a selection-look-ahead artifact** — the biased universe pre-loaded
+later-winners. Point-in-time, broad momentum is barely positive in-sample (0.18) and
+negative OOS. By implication the iter-8/9 "best result" (the vol-target overlay on the
+*same* look-ahead universe) is also inflated and must be re-tested point-in-time.
+
+**Two caveats on the fix itself (honesty):** (1) it removes *selection* look-ahead but
+NOT *coverage* survivorship — delisted names are still entirely absent from our
+yfinance data (a hard data limit, now documented in `build_universe.py`); (2) local
+history starts mid-2016, so the as-of-2017 liquidity window is only ~6 months. Even so,
+the correction is decisive: it caught a large inflation, which is exactly why it was
+worth doing. The honest study verdict (no robust price-only alpha) is now *stronger*,
+not weaker.
+
 ## Recommendation
 
 If trading any of this: favor **classic 12-1 / dual momentum on a diversified,
