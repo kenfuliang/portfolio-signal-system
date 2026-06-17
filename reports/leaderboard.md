@@ -88,6 +88,7 @@ Best run per strategy x universe, ranked by fitness then lower decay. Legacy row
 | 80 | equal_weight_hold | watchlist | 0.239 | 6.410 | 14.800 |  |  | 2026-06-17T03:49:33.484536+00:00-equal_weight_hold-ec08 | fe153ee |
 | 81 | asymmetric_trend | watchlist | -1.700 | 1.224 | 2.800 |  |  | 2026-06-17T03:50:07.290453+00:00-asymmetric_trend-297a | fe153ee |
 | 82 | trend_ensemble | watchlist | 0.260 | 6.591 | 13.200 |  |  | 2026-06-17T03:50:43.323950+00:00-trend_ensemble-0da0 | fe153ee |
+| 83 | risk_parity | watchlist | 0.008 | 4.252 | 14.600 |  |  | 2026-06-17T04:10:19.412115+00:00-risk_parity-80be | 1a6638f |
 
 ## Baselines (buy-and-hold reference)
 

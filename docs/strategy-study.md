@@ -668,6 +668,39 @@ tooling (point-in-time universe, experiment ledger, gross cap, `rebalance_holds`
 deflated-Sharpe discipline) that turned a pile of flattering backtests into a trustworthy
 conclusion.
 
+## Finding 23 — Multi-asset allocation on its home turf: fails, but for a period-specific reason
+
+*2026-06-17. Allocation strategies tested on a 12-ETF asset-class universe
+(US/intl/EM equities, treasuries/credit, gold/commodities) — the home turf of
+trend-following / dual-momentum / risk-parity. Corrected basis.*
+
+Earlier findings tested these allocation strategies on a stock universe — the wrong
+home turf. Trend-following and dual-momentum are *asset-class rotation* strategies whose
+risk-adjusted edge comes from bonds/gold rallying when equities crash. Tested properly:
+
+| Strategy (multi-asset) | CAGR | Sharpe | MaxDD |
+|---|---|---|---|
+| risk_parity | 4.3% | 0.008 | 14.6% |
+| relative_strength | 4.1% | −0.02 | 8.1% |
+| dual_momentum | 2.9% | −0.215 | 10.4% |
+| **SPY** | 14.1% | **0.53** | 32.5% |
+
+**They fail — worse than on stocks — and the reason is period-specific, not a strategy
+flaw.** 2017–2026 is the worst-case decade for cross-asset diversification: bonds were
+crushed by the 2022 rate-hike cycle, and the **stock-bond correlation flipped positive in
+2022** (both fell together), so the diversifiers failed to hedge the only equity crash
+in-sample. Risk-parity's heavy bond weighting hurt it most. Low drawdowns (5–15%) confirm
+the defensive tilt, but returns are dismal.
+
+**This surfaces a hard sample limitation:** allocation/diversified strategies need a full
+cycle — including a 2008-style crash where bonds *rally* — to show their edge, and our
+data (starting mid-2016) contains no such episode. So we cannot fairly evaluate them here.
+Combined with Findings 1–22, the complete verdict on the **2017–2026 sample** is: neither
+price-only stock strategies NOR multi-asset allocation beats SPY — but for allocation the
+failure is substantially driven by an unusually diversification-hostile decade, not the
+method. A longer history (pre-2016) is needed to test them fairly, which is another
+data-acquisition decision.
+
 ## Recommendation
 
 If trading any of this: favor **classic 12-1 / dual momentum on a diversified,
