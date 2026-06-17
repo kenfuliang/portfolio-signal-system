@@ -447,6 +447,43 @@ buy-hold (SPY 0.53 / QQQ 0.68), (3) pass a **deflated Sharpe** for the trial cou
 Coverage survivorship (delisted names absent) still applies. But for the first time the
 loop has a candidate worth hardening rather than retiring.
 
+## Finding 16 — First satellite: the de-biased overlay beats the baseline in BOTH regimes
+
+*2026-06-17. Ledger run_id `2026-06-17T04:00:00+00:00-vol_target_momentum-b299`.
+Completes the de-biased two-split test. The loop's first promotion.*
+
+Ran the PIT recovery split. Full de-biased picture for the overlay vs baseline:
+
+| Split | Overlay OOS | Baseline OOS |
+|---|---|---|
+| Crash (2021-06-30) | **+0.51** | −0.216 |
+| Recovery (2022-06-30) | **+0.475** | +0.422 |
+| **mean** | **+0.49** | +0.10 |
+
+On the de-biased universe the overlay **beats the baseline on both splits**, positive
+and low-decay in both regimes. This is the **opposite** of the look-ahead universe
+(iter-9: the overlay *lost* the recovery split, +0.34 vs +0.93). The look-ahead
+high-flyers had inflated the *baseline's* recovery and **masked** the overlay's edge —
+so the survivorship correction didn't just kill a false positive (Finding 14), it
+**revealed a true one**.
+
+**Gate: SATELLITE — the loop's first promotion.** Earned: beats the strategy baseline
+on all splits, low/negative decay, and survives the survivorship correction.
+
+**What keeps it out of core (honesty intact):**
+- Mean OOS **0.49 does not beat buy-hold** (SPY 0.53, QQQ 0.68). It beats the *momentum
+  baseline*, not the market — it is a better *active* strategy, not proven alpha over
+  indexing.
+- The **deflated-Sharpe check is only marginal** (both splits ~0.48–0.51 vs a ~0.3–0.4
+  noise band for ~100 trials). A formal DSR with the exact trial count is the next step.
+- **Coverage survivorship** (delisted names absent) is unfixable with current data.
+
+So: a genuine, de-biased, split-robust improvement over the momentum baseline — the
+first thing in this study that survived every correction thrown at it — but not yet a
+market-beating strategy. The honest next steps are a formal deflated-Sharpe test and a
+drawdown comparison vs SPY (the overlay's crash hedge should win on drawdown even where
+it ties on Sharpe).
+
 ## Recommendation
 
 If trading any of this: favor **classic 12-1 / dual momentum on a diversified,
