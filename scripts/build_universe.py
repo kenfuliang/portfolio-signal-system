@@ -33,10 +33,16 @@ def median(xs):
     return xs[n // 2] if n % 2 else 0.5 * (xs[n // 2 - 1] + xs[n // 2])
 
 
-def symbol_liquidity(zip_path: str, start_year: int):
+def symbol_liquidity(zip_path: str, start_year: int, asof_window=None):
     """Return (median_dollar_volume, n_rows, first_year) or None on failure.
 
     CSV rows: YYYYMMDD 00:00, O, H, L, C(x10000), Volume. Dollar volume = C/10000 * V.
+
+    asof_window: optional (lo_yyyymmdd, hi_yyyymmdd) ints. When given, liquidity is
+    measured ONLY over rows in [lo, hi] — the trailing window observable AT the backtest
+    start — so selection uses no future data (point-in-time, removes selection
+    look-ahead). The symbol must have its first bar on/before `lo` (it must already
+    exist at the window start) and enough rows inside the window.
     """
     try:
         with zipfile.ZipFile(zip_path) as zf:
@@ -46,12 +52,14 @@ def symbol_liquidity(zip_path: str, start_year: int):
         return None
     dvs = []
     first_year = None
+    first_ymd = None
     rows = 0
     for line in raw.splitlines():
         parts = line.split(",")
         if len(parts) < 6:
             continue
         try:
+            ymd = int(parts[0][:8])
             yr = int(parts[0][:4])
             close = int(parts[4]) / 10000.0
             vol = int(parts[5])
@@ -59,9 +67,23 @@ def symbol_liquidity(zip_path: str, start_year: int):
             continue
         if first_year is None:
             first_year = yr
+            first_ymd = ymd
+        if asof_window is not None:
+            lo, hi = asof_window
+            if ymd < lo or ymd > hi:
+                continue          # point-in-time: ignore data outside the trailing window
         rows += 1
         dvs.append(close * vol)
-    if first_year is None or first_year > start_year:
+    if first_year is None:
+        return None
+    if asof_window is not None:
+        _, hi = asof_window
+        # must already exist BEFORE the as-of date (no IPO-after-start look-ahead).
+        # We don't require existence at window start — local history may begin
+        # mid-window — only that liquidity is measured with no future data.
+        if first_ymd is None or first_ymd >= hi:
+            return None
+    elif first_year > start_year:
         return None
     return median(dvs), rows, first_year
 
@@ -71,7 +93,29 @@ def main():
     ap.add_argument("--n", type=int, default=500)
     ap.add_argument("--start-year", type=int, default=2017)
     ap.add_argument("--min-rows", type=int, default=500)
+    ap.add_argument("--asof", type=str, default=None,
+                    help="YYYY-MM-DD: point-in-time selection — rank liquidity using ONLY "
+                         "the trailing year before this date (removes selection look-ahead). "
+                         "Without it, liquidity is ranked over the full history (look-ahead).")
+    ap.add_argument("--asof-lookback-days", type=int, default=365,
+                    help="calendar-days trailing window for --asof liquidity (default 365)")
     args = ap.parse_args()
+
+    asof_window = None
+    min_rows = args.min_rows
+    if args.asof:
+        y, m, d = map(int, args.asof.split("-"))
+        hi = y * 10000 + m * 100 + d
+        # trailing calendar window ending the day before asof (no same-day/future data)
+        from datetime import date, timedelta
+        lo_date = date(y, m, d) - timedelta(days=args.asof_lookback_days)
+        lo = lo_date.year * 10000 + lo_date.month * 100 + lo_date.day
+        asof_window = (lo, hi)
+        # require enough in-window bars to rank liquidity; kept modest because local
+        # history may cover only part of the trailing window (data starts mid-2016).
+        min_rows = max(60, int(args.asof_lookback_days * 252 / 365 * 0.4))
+        print(f"POINT-IN-TIME selection: ranking liquidity over [{lo}..{hi}] only "
+              f"(>= {min_rows} bars in window).", flush=True)
 
     ranked = []
     files = glob.glob(os.path.join(DAILY, "*.zip"))
@@ -80,11 +124,11 @@ def main():
         sym = os.path.splitext(os.path.basename(p))[0]
         if "." in sym:                       # skip class-share dotted tickers
             continue
-        res = symbol_liquidity(p, args.start_year)
+        res = symbol_liquidity(p, args.start_year, asof_window=asof_window)
         if res is None:
             continue
         mdv, rows, _ = res
-        if rows < args.min_rows:
+        if rows < min_rows:
             continue
         ranked.append((sym.upper(), mdv))
 
@@ -95,9 +139,13 @@ def main():
     picked = sorted(set(picked))
     print(f"qualified {len(ranked)} symbols; selected top {len(picked)} by dollar volume")
 
+    pit = f"point-in-time as of {args.asof}" if args.asof else "FULL-HISTORY (has selection look-ahead)"
     lines = [
         "# Broad liquidity-ranked universe (build_universe.py) — dynamic selection.",
-        f"# Top ~{args.n} US names by median dollar volume with history from <= {args.start_year}.",
+        f"# Top ~{args.n} US names by median dollar volume; ranking: {pit}.",
+        "# SURVIVORSHIP CAVEAT: built from currently-ingested (yfinance) names only, so",
+        "#   names DELISTED before today are absent (coverage survivorship remains).",
+        f"#   --asof removes SELECTION look-ahead but NOT coverage survivorship — research-grade.",
         "# Restore the AI-semis universe with: git checkout config/universe.yaml",
         "",
         "mode: watchlist",
