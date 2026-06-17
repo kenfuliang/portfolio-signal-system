@@ -122,7 +122,16 @@ class PortfolioSignalSystem(QCAlgorithm):
         # are always set so stop-loss exits still fire.
         lev_syms = set(self.cfg.risk["leveraged"]["symbols"])
         sizing_mode = self.cfg.strategies.get("sizing", "risk_based")
-        buys = [d for d in decisions if d.action == Action.BUY and not halt_buys]
+        # Names to (re)size this rebalance. By default we ALSO re-size HELD positions
+        # (rebalance_holds: true) so realized exposure tracks the sizing model — without
+        # this, held winners ride and compound into unintended leverage (study Finding
+        # 18). Strategies that intentionally let winners run set rebalance_holds: false
+        # (only newly-bought names are sized; holds drift). Holds are still re-sized when
+        # buys are halted by the circuit breaker — trimming reduces risk.
+        rebalance_holds = self.cfg.strategies.get("rebalance_holds", True)
+        buys = [d for d in decisions
+                if (d.action == Action.BUY and not halt_buys)
+                or (d.action == Action.HOLD and rebalance_holds)]
         raw_targets = {}
 
         if sizing_mode == "equal_weight" and buys:

@@ -8,6 +8,12 @@ active: trend_ma
 # broad (~500-name) universes — daily is far too heavy and rotation is monthly anyway.
 rebalance: daily
 
+# Re-size HELD positions back to target each rebalance (default true). Keeps realized
+# exposure tracking the sizing model; without it held winners ride into unintended
+# leverage (study Finding 18). Set false ONLY for let-winners-run strategies
+# (e.g. momentum_runner) that intend positions to drift.
+rebalance_holds: true
+
 # --- Trend / momentum ---
 # top_n bumped to 20 for broad-universe selection (pick a real portfolio, not 5/500).
 momentum_12_1: { top_n: 20 }
@@ -37,3 +43,4 @@ momentum_runner: { max_positions: 20 }
 # regime gate and time-series vol targeting (scale name count by target/realized vol).
 vol_target_momentum: { top_n: 20, target_vol: 0.30, vol_window: 20, regime_ma: 200, benchmark: [QQQ, VTI, SMH, SOXX] }
 asymmetric_trend: { breakdown_band: 0.07 }   # robust 5-10% plateau; 7% = middle
+trend_ensemble: { breakdown_band: 0.03 }

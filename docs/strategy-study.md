@@ -550,6 +550,41 @@ raw-target leverage (20 names × 10% = 200%), even though the sleeve cap binds t
 the broad universe. The satellite (Finding 16/17) stands, but its leverage caveat is now
 precisely understood: realized exposure drift from un-trimmed holds, not sizing.
 
+## Finding 19 — Satellite revoked: the edge was leverage. Honest capstone.
+
+*2026-06-17. Ledger run_id `2026-06-17T06:00:00+00:00-vol_target_momentum-8fb2`.
+Fixes Finding 18 (`rebalance_holds`, `main.py`) and re-measures everything.*
+
+Implemented the Finding 18 fix (option B): `rebalance_holds: true` (default) re-sizes
+HELD positions back to target each rebalance, so realized exposure tracks the sizing
+model instead of drifting into leverage. It works — exposure now maxes at 0.72 (was
+2.0). Re-ran the "satellite" overlay full-period on the de-biased universe:
+
+| Overlay (PIT, de-biased) | CAGR | Sharpe | MaxDD | max exp |
+|---|---|---|---|---|
+| leveraged (Finding 16/17) | 20.5% | 0.572 | 41.6% | 2.0 |
+| **controlled (this fix)** | **8.0%** | **0.297** | **21.1%** | 0.72 |
+| SPY | 14.1% | 0.53 | 32.5% | 1.0 |
+
+**The satellite is revoked — its edge was unintended leverage.** De-levered, the overlay
+earns 8% at Sharpe 0.30: **below SPY on both return and Sharpe**, back inside the
+deflated-Sharpe noise band. Its only surviving virtue is **drawdown 21% vs SPY's 32.5%**
+— the crash hedge genuinely cuts drawdown, a *defensive* profile, not alpha.
+
+**The honest verdict of the whole investigation (Findings 1–19):** on **price-only,
+survivorship-corrected, properly-rebalanced, unleveraged** data, **no momentum/overlay/
+sizing/universe variant beats SPY buy-and-hold on a risk-adjusted basis.** Every result
+that appeared to was an artifact — look-ahead selection (F14), a circuit-breaker
+deadlock (F17), or exposure-drift leverage (F18/19). The rigor cascade caught each one.
+That is the value the loop delivered: not a market-beating strategy, but **a trustworthy
+"no" and the tools that produce it** (point-in-time universe, experiment ledger,
+gross-exposure cap, `rebalance_holds`). The remaining real lever is unchanged and
+data-blocked: **new information (fundamentals/sentiment), not more price engineering.**
+
+NOTE: `rebalance_holds` and the survivorship correction change the exposure/return of
+**all earlier findings** — their numbers were leveraged and/or look-ahead. This finding
+is the corrected baseline; treat Findings 9–17's magnitudes as superseded.
+
 ## Recommendation
 
 If trading any of this: favor **classic 12-1 / dual momentum on a diversified,
