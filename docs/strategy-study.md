@@ -767,6 +767,38 @@ engineering lesson (always verify deployed capital — F5, F25), but it does not
 verdict. The remaining lever is unchanged: **new information (fundamentals)**, gated on a
 paid-data decision.
 
+## Finding 26 — Options checked too: data-blocked. Every alpha path needs data we lack.
+
+*2026-06-17. Closing the loop by checking the one untested direction in the repo —
+the options infrastructure (`strategy/options.py`, `scripts/option_backtest.py`).*
+
+The repo has options tooling, but it is **synthetic**: it prices options via
+Black-Scholes using *realized* vol (no historical option data). This structurally
+rules out the only options strategy that could beat the benchmark:
+
+- The robust options edge is the **volatility risk premium** (sell options; implied
+  vol is systematically richer than realized). Its entire edge is the
+  **implied−realized spread** — and synthetic pricing at realized vol has **zero
+  implied premium by construction**. It cannot demonstrate the VRP.
+- The existing prototype tests only *long* calls = leverage on QQQ; leverage doesn't
+  change Sharpe (established throughout). It cannot beat QQQ risk-adjusted.
+
+So options is **data-blocked too** (needs real historical option chains with implied
+vols — a paid dataset).
+
+**Final, exhaustive conclusion of the investigation (Findings 1–26):** on the data
+available — daily prices, liquid survivors, US-equity-dominated 2007–2026 — **no
+strategy beats SPY buy-and-hold risk-adjusted**, proven across every strategy family,
+multiple universes (concentrated / broad de-biased / multi-asset), multiple regimes
+(2017–26 and the full 2007–26 cycle), with deployment and leverage bugs fixed. And
+**every untested lever that could change the answer is gated on data we do not have**:
+fundamentals/sentiment (paid), real option chains (paid), longer/point-in-time
+delisted-inclusive history (paid/unavailable). The honest, evidence-backed
+recommendation for *this* data is **index SPY**, with a properly-deployed risk-parity /
+dual-momentum sleeve available if minimizing drawdown matters more than maximizing
+return. Genuine alpha requires new information, and acquiring it is a capital decision —
+not something more backtesting on the current data can produce.
+
 ## Recommendation
 
 If trading any of this: favor **classic 12-1 / dual momentum on a diversified,
