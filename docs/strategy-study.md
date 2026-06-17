@@ -612,6 +612,30 @@ since the start and still blocked: **new information (fundamentals/sentiment), w
 requires a paid-data decision.** The durable output of this work is not a
 market-beating strategy but a rigorous, honest "no" and the tooling that produces it.
 
+## Finding 21 — Corrected tournament: 7 families, none beats SPY; dual_momentum best
+
+*2026-06-17. Six previously-untested strategies tested on the rigorous basis
+(de-biased PIT universe, `rebalance_holds`, no deadlock) vs SPY.*
+
+| Strategy | CAGR | Sharpe | MaxDD |
+|---|---|---|---|
+| **dual_momentum** | 10.5% | **0.418** | 21.8% |
+| relative_strength | 7.3% | 0.31 | 14.9% |
+| golden_cross | 6.4% | 0.236 | 15.2% |
+| zscore_reversion | 6.2% | 0.224 | 13.0% |
+| sector_rotation | 3.9% | −0.04 | 8.8% |
+| rsi_reversion | 2.8% | −0.18 | 12.3% |
+| **SPY** | 14.1% | **0.53** | 32.5% |
+
+Broadening from 3 to **7 distinct families** (adding allocation, rotation, trend, and
+**mean-reversion**) does not change the verdict: **none beats SPY risk-adjusted.**
+Mean-reversion is the *worst* (negative Sharpe) — it does not work on this monthly broad
+universe. `dual_momentum` is the **best price-only strategy** (Sharpe 0.418, MaxDD 21.8%
+< SPY) — closest to the benchmark with lower drawdown, but still short on both return and
+Sharpe. The "no price-only alpha" conclusion is now robust across the strategy space, not
+an artifact of testing only momentum. dual_momentum stands as the best *defensive*
+price-only option (consistent with original-study Findings 1–3).
+
 ## Recommendation
 
 If trading any of this: favor **classic 12-1 / dual momentum on a diversified,
