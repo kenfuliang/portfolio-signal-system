@@ -2,7 +2,12 @@
 # `active` picks which algorithm main.py runs; all share the same universe and
 # the risk layer (config/risk.yaml). Tune params by backtest, not by gut.
 
-active: trend_ma
+# Default set to the evidence-based choice (study Findings 1-28): dual_momentum is the
+# best-validated, most robust price-only rule — lowest IS->OOS decay, lowest drawdown,
+# literature-backed (Antonacci). NOTE: no price-only strategy beats buy-and-hold SPY
+# risk-adjusted on the available data; dual_momentum is for drawdown-averse capital and
+# the forward paper-trade. See docs/strategy-study.md (read-first verdict).
+active: dual_momentum
 
 # Rebalance cadence: daily | weekly | monthly (default daily). Use monthly for
 # broad (~500-name) universes — daily is far too heavy and rotation is monthly anyway.
