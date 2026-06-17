@@ -484,6 +484,44 @@ market-beating strategy. The honest next steps are a formal deflated-Sharpe test
 drawdown comparison vs SPY (the overlay's crash hedge should win on drawdown even where
 it ties on Sharpe).
 
+## Finding 17 — Full-period reality check: satellite confirmed, plus a deadlock bug & leverage caveat
+
+*2026-06-17. Ledger run_id `2026-06-17T05:00:00+00:00-vol_target_momentum-ae78`.
+Validates Finding 16 against SPY and uncovers a config-critical bug.*
+
+Ran the satellite overlay full-period (PIT universe) to test the real bar — does it
+beat SPY on return *and* drawdown? The first run gave a nonsensical CAGR 2.4% /
+Sharpe −0.095. Diagnosis (exposure by year: deployed 2017–18, then **0.00 for
+2019–2026**): the **15% circuit breaker latched** after the 2018 drawdown — a cashed-out
+book can't climb back above its peak, so the halt never lifts (a deadlock **documented
+in `main.py`**: go-to-cash timing strategies must set `use_circuit_breaker: false`).
+The walk-forward OOS windows started fresh post-2018, never tripped it — so the Finding
+16 satellite Sharpes were valid all along.
+
+Corrected full-period (`use_circuit_breaker: false`):
+
+| | CAGR | Sharpe | MaxDD | mean exp |
+|---|---|---|---|---|
+| **Overlay (PIT)** | **20.5%** | **0.572** | 41.6% | 1.07 |
+| SPY | 14.1% | 0.53 | 32.5% | 1.0 |
+| QQQ | 20.2% | 0.68 | 34.5% | 1.0 |
+
+**Satellite confirmed.** Full-period Sharpe 0.572 reconciles with the OOS Sharpes
+(0.48–0.51), beats SPY (0.53), and matches QQQ's return; 2022 exposure of 0.11 shows
+the regime gate really did cut the crash.
+
+**Two caveats keep it out of core (and flag real work):**
+- **Drawdown 41.6% is WORSE than SPY (32.5%)** — so it does *not* deliver "same return
+  at less drawdown." It's QQQ-like return at QQQ-like-or-worse drawdown.
+- It uses **leverage** (exposure to 1.66×) — the risk layer is not capping gross
+  exposure to ~100%. This needs a gross-exposure cap before the strategy is trustworthy;
+  the Sharpe edge may partly be uncompensated leverage.
+
+**Two banked lessons:** (1) go-to-cash strategies REQUIRE `use_circuit_breaker: false`
+or they deadlock — a near-miss that almost made us wrongly revoke a real result; (2) the
+risk layer needs a gross-exposure cap. The satellite stands; the path to core is
+controlling leverage and proving the drawdown profile, not finding more signal.
+
 ## Recommendation
 
 If trading any of this: favor **classic 12-1 / dual momentum on a diversified,
